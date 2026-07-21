@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
+
+class ContactInquiryMail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public function __construct(
+        public string $senderName,
+        public string $senderEmail,
+        public string $senderPhone,
+        public string $inquirySubject,
+        public string $messageBody
+    ) {}
+
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            subject: 'New Contact Inquiry: ' . $this->inquirySubject,
+            replyTo: [
+                new \Illuminate\Mail\Mailables\Address($this->senderEmail, $this->senderName),
+            ],
+        );
+    }
+
+    public function content(): Content
+    {
+        return new Content(
+            view: 'emails.contact-inquiry',
+        );
+    }
+}
