@@ -144,7 +144,7 @@ return [
     /* ── Facilities Page ── */
     'fac_page_tag'         => 'Hotel Amenities',
     'fac_page_title'       => 'World-Class Facilities',
-    'fac_page_subtitle'    => 'Everything you need for the perfect stay at Monarch Hotel',
+    'fac_page_subtitle'    => 'Everything you need for the perfect stay at Royal Crest Hotel',
     'fac_cta_title'        => 'Ready to Experience All This?',
     'fac_cta_desc'         => 'Book your stay and enjoy unrestricted access to all our world-class facilities.',
     'fac_cta_btn'          => 'Book Your Stay',
@@ -171,12 +171,12 @@ return [
     'about_leadership_tag' => 'Leadership',
     'about_team_title'     => 'Meet Our Team',
     'about_gm_role'        => 'General Manager',
-    'about_gm_bio'         => 'Leading Monarch Hotel with 20+ years in luxury hospitality.',
+    'about_gm_bio'         => 'Leading Royal Crest Hotel with 20+ years in luxury hospitality.',
     'about_chef_role'      => 'Head Chef',
     'about_chef_bio'       => 'Culinary artist bringing Filipino and international flavors together.',
     'about_dir_role'       => 'Director of Rooms',
     'about_dir_bio'        => 'Ensuring every guest experience is nothing short of exceptional.',
-    'about_cta_title'      => 'Experience Monarch Hotel',
+    'about_cta_title'      => 'Experience Royal Crest Hotel',
     'about_cta_desc'       => 'Book your stay and discover what sets us apart.',
     'about_cta_btn'        => 'Browse Rooms',
 
@@ -209,7 +209,7 @@ return [
     /* ── Gallery Page ── */
     'gal_tag'              => 'Visual Tour',
     'gal_title'            => 'Photo Gallery',
-    'gal_subtitle'         => 'Explore Monarch Hotel through our lens',
+    'gal_subtitle'         => 'Explore Royal Crest Hotel through our lens',
     'gal_filter_all'       => 'All',
     'gal_cat_hotel'        => 'Hotel',
     'gal_cat_rooms'        => 'Rooms',
@@ -245,7 +245,7 @@ return [
     /* ── Auth: Register ── */
     'auth_create_account'  => 'Create Your',
     'auth_create_gold'     => 'Account',
-    'auth_register_sub'    => 'Join Monarch Hotel and enjoy seamless booking management, exclusive member discounts, and priority support.',
+    'auth_register_sub'    => 'Join Royal Crest Hotel and enjoy seamless booking management, exclusive member discounts, and priority support.',
     'auth_easy_booking'    => 'Easy online booking and reservation management.',
     'auth_booking_history' => 'Access booking history and download invoices.',
     'auth_member_disc'     => 'Exclusive member discounts and promotions.',
