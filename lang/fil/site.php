@@ -6,7 +6,7 @@ return [
     'nav_home'          => 'Home',
     'nav_rooms'         => 'Mga Kwarto',
     'nav_facilities'    => 'Mga Pasilidad',
-    'nav_gallery'       => 'Galería',
+    'nav_gallery'       => 'Galeria',
     'nav_about'         => 'Tungkol Sa Amin',
     'nav_contact'       => 'Makipag-ugnayan',
     'nav_dashboard'     => 'Dashboard',
@@ -19,7 +19,7 @@ return [
     'nav_language'      => 'Wika',
 
     /* ── Hero ── */
-    'hero_tag'          => 'Luxury Hotel · Calasiao, Pangasinan',
+    'hero_tag'          => 'Marangyang Hotel · Calasiao, Pangasinan',
     'hero_title_line1'  => 'Maranasan ang',
     'hero_title_line2'  => 'Luho Na Higit',
     'hero_title_line3'  => 'Sa Inaasahan',
@@ -165,7 +165,7 @@ return [
     'about_mission_tag'    => 'Ang Aming Misyon',
     'about_mission_desc'   => 'Magbigay ng walang kapantay na karanasan sa hospitality na pinagsama ang Filipino na init at world-class na pamantayan, na lumilikha ng pangmatagalang alaala para sa bawat bisita.',
     'about_vision_tag'     => 'Ang Aming Bisyon',
-    'about_vision_desc'    => 'Maging ang pinaka-selebradong luxury hotel destination sa Pangasinan, kilala sa natatanging serbisyo, tunay na karanasan, at sustainable na mga gawi.',
+    'about_vision_desc'    => 'Maging ang pinaka-selebradong destinasyon ng marangyang hotel sa Pangasinan, kilala sa natatanging serbisyo, tunay na karanasan, at mga sustainable na gawi.',
     'about_values_tag'     => 'Ang Aming mga Halaga',
     'about_values_desc'    => 'Integridad, Kahusayan, Init, Inobasyon — ang apat na haligi na ito ay gumagabay sa lahat ng aming ginagawa sa Royal Crest Hotel.',
     'about_leadership_tag' => 'Pamumuno',
@@ -208,7 +208,7 @@ return [
 
     /* ── Gallery Page ── */
     'gal_tag'              => 'Visual Tour',
-    'gal_title'            => 'Photo Gallery',
+    'gal_title'            => 'Galeria ng Mga Larawan',
     'gal_subtitle'         => 'I-explore ang Royal Crest Hotel sa pamamagitan ng aming lens',
     'gal_filter_all'       => 'Lahat',
     'gal_cat_hotel'        => 'Hotel',
@@ -217,7 +217,7 @@ return [
     'gal_cat_restaurant'   => 'Restaurant',
     'gal_cat_pool'         => 'Pool',
     'gal_cat_events'       => 'Mga Event',
-    'gal_coming_soon'      => 'Mga larawan ng gallery ay darating na.',
+    'gal_coming_soon'      => 'Darating na ang mga larawan sa gallery.',
     'gal_browse_rooms'     => 'I-browse ang Aming mga Kwarto',
 
     /* ── Auth: Login ── */
@@ -266,13 +266,13 @@ return [
     'auth_create_btn'      => 'Lumikha ng Account',
 
     /* ── Auth: OTP ── */
-    'otp_title'            => 'OTP Verification',
+    'otp_title'            => 'Pagpapatunay ng OTP',
     'otp_secure_access'    => 'I-secure ang Inyong',
     'otp_access'           => 'Access',
     'otp_hero_sub'         => 'Nagpadala kami ng 6-digit na verification code sa inyong email. Ilagay ito upang makumpleto ang inyong login nang ligtas.',
     'otp_step1_title'      => 'Na-verify ang Mga Kredensyal',
     'otp_step1_sub'        => 'Nagtugma ang inyong email at password.',
-    'otp_step2_title'      => 'OTP Verification',
+    'otp_step2_title'      => 'Pagpapatunay ng OTP',
     'otp_step2_sub'        => 'Ilagay ang 6-digit na code na ipinadala sa inyong email.',
     'otp_step3_title'      => 'Naibigay na ang Access',
     'otp_step3_sub'        => 'Ire-redirect kayo sa inyong dashboard.',

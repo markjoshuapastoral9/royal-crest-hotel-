@@ -2018,7 +2018,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `avatar`, `role`, `is_active`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin Subo', 'admin@monarchhotel.com', '+63 912 345 6789', 'Calasiao, Pangasinan, Philippines', NULL, 'admin', 1, '2026-07-17 05:36:10', '$2y$12$tf.ZBMGqRfUywbExCWiMXOiXXc7/fLXgk6nEqO4cSQfoCby0rUdM2', NULL, NULL, NULL, NULL, NULL, NULL, '2026-07-17 05:36:10', '2026-07-17 05:36:10'),
+(1, 'Admin Subo', 'admin@royalcresthotel.com', '+63 912 345 6789', 'Calasiao, Pangasinan, Philippines', NULL, 'admin', 1, '2026-07-17 05:36:10', '$2y$12$tf.ZBMGqRfUywbExCWiMXOiXXc7/fLXgk6nEqO4cSQfoCby0rUdM2', NULL, NULL, NULL, NULL, NULL, NULL, '2026-07-17 05:36:10', '2026-07-17 05:36:10'),
 (2, 'Staff Member', 'staff@monarchhotel.com', '+63 912 345 6780', 'Dagupan City, Pangasinan', NULL, 'staff', 1, '2026-07-17 05:36:10', '$2y$12$/X4Eq0GGo9Zltzf379nLP.BeGXNPKYn6dDE4fJNeCW4kKOKlzhh72', NULL, NULL, NULL, NULL, NULL, NULL, '2026-07-17 05:36:10', '2026-07-17 05:36:10'),
 (3, 'Maria Santos', 'maria@example.com', '+63 949 602 3137', NULL, NULL, 'customer', 1, '2026-07-17 05:36:10', '$2y$12$YbxK9O23szGTwAUg2g1vLuayJkj.pYhDW0scn4cZ/sycD/K5B8WA2', NULL, NULL, NULL, NULL, NULL, NULL, '2026-07-17 05:36:10', '2026-07-17 05:36:10'),
 (4, 'Juan dela Cruz', 'juan@example.com', '+63 982 728 3897', NULL, NULL, 'customer', 1, '2026-07-17 05:36:10', '$2y$12$jjNojZtFcesQgQX7ntrBiuej4ZYddN6lsPKM04M2DnZ44okmQNgL2', NULL, NULL, NULL, NULL, NULL, NULL, '2026-07-17 05:36:10', '2026-07-17 05:36:10'),

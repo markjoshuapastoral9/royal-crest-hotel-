@@ -659,9 +659,9 @@
                     <div class="footer-brand mb-3">The Royal Crest</div>
                     <p class="small" style="line-height:1.8;">{{ __('site.footer_tagline') }}</p>
                     <div class="d-flex gap-3 mt-3">
-                        <a href="#" class="social-icon"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-twitter-x fs-5"></i></a>
+                         <a href="https://www.facebook.com/mj.pastoral" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="https://www.instagram.com/mj.pastoral/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="https://github.com/markjoshuapastoral9" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="bi bi-github fs-5"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
@@ -700,7 +700,7 @@
             <hr style="border-color:rgba(255,255,255,.1); margin-top: 2rem;">
             <div class="row align-items-center">
                 <div class="col-md-6 small text-center text-md-start" style="color:rgba(255,255,255,.4);">
-                    &copy; {{ date('Y') }} The Royal Crest. {{ __('site.footer_copyright') }}
+                    &copy; {{ date('Y') }} Mj Pastoral(orginal) {{ __('site.footer_copyright') }}
                 </div>
                 <div class="col-md-6 small text-center text-md-end" style="color:rgba(255,255,255,.4);">
                     Calasiao, Pangasinan, Philippines &mdash; {{ __('site.footer_luxury') }}
