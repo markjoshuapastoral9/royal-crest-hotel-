@@ -7,8 +7,11 @@ cmds = ['composer install --no-dev --no-interaction --prefer-dist --optimize-aut
 [phases.build]
 cmds = [
     'npm ci --prefer-offline --no-audit',
-    'npm run build'
+    'npm run build',
+    'php artisan route:clear',
+    'php artisan config:clear',
+    'php artisan view:clear'
 ]
 
 [start]
-cmd = 'php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT'
+cmd = 'php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT --no-reload'
