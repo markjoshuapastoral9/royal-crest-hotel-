@@ -28,6 +28,16 @@ use App\Http\Controllers\NotificationController;
 | Public Routes
 |--------------------------------------------------------------------------
 */
+
+// Health check for Railway/monitoring
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'healthy',
+        'timestamp' => now()->toIso8601String(),
+        'app' => config('app.name'),
+    ]);
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/facilities', [HomeController::class, 'facilities'])->name('facilities');
