@@ -39,6 +39,18 @@ Route::post('/contact', [HomeController::class, 'submitContact'])->name('contact
 Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
 Route::get('/rooms/{room}', [RoomController::class, 'show'])->name('rooms.show');
 
+// Packages
+Route::get('/packages', [App\Http\Controllers\PackageController::class, 'index'])->name('packages.index');
+Route::get('/packages/{package}/book', [App\Http\Controllers\PackageController::class, 'book'])->name('packages.book');
+Route::get('/packages/{package}', [App\Http\Controllers\PackageController::class, 'show'])->name('packages.show');
+
+// Dining
+Route::get('/dining/restaurant', [App\Http\Controllers\DiningController::class, 'restaurant'])->name('dining.restaurant');
+Route::get('/dining/menu', [App\Http\Controllers\DiningController::class, 'menu'])->name('dining.menu');
+Route::get('/dining/private-dining', [App\Http\Controllers\DiningController::class, 'privateDining'])->name('dining.private');
+Route::post('/dining/private-dining/reserve', [App\Http\Controllers\DiningController::class, 'storeReservation'])->name('dining.reservation.store');
+Route::get('/dining/room-service', [App\Http\Controllers\DiningController::class, 'roomService'])->name('dining.room-service');
+
 // Booking - check availability & apply promo (AJAX, no auth required)
 Route::post('/booking/check-availability', [BookingController::class, 'checkAvailability'])->name('booking.check-availability');
 Route::post('/booking/apply-promo', [BookingController::class, 'applyPromo'])->name('booking.apply-promo');

@@ -1,4 +1,4 @@
-# 🚀 Deployment Guide - Monarch Hotel Booking System
+# 🚀 Deployment Guide - Royal Crest Hotel Booking System
 
 ## Production Deployment Checklist
 
@@ -71,16 +71,16 @@ sudo apt install nginx -y
 ```bash
 # Via Git (recommended)
 cd /var/www/
-git clone your-repository-url monarch-hotel
-cd monarch-hotel
+git clone your-repository-url royal-crest-hotel
+cd royal-crest-hotel
 
 # Or via FTP/SFTP
-# Upload all files to /var/www/monarch-hotel/
+# Upload all files to /var/www/royal-crest-hotel/
 ```
 
 ### 2. Set Permissions
 ```bash
-cd /var/www/monarch-hotel
+cd /var/www/royal-crest-hotel
 
 # Set ownership
 sudo chown -R www-data:www-data .
@@ -122,7 +122,7 @@ nano .env
 
 ```env
 # Application
-APP_NAME="Monarch Hotel"
+APP_NAME="Royal Crest Hotel"
 APP_ENV=production
 APP_KEY=  # Will be generated
 APP_DEBUG=false
@@ -132,8 +132,8 @@ APP_URL=https://yourdomain.com
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=monarch_hotel_production
-DB_USERNAME=monarch_user
+DB_DATABASE=royal_crest_hotel_production
+DB_USERNAME=royal_crest_user
 DB_PASSWORD=STRONG_PASSWORD_HERE
 
 # Mail (Example with Gmail)
@@ -143,8 +143,8 @@ MAIL_PORT=587
 MAIL_USERNAME=your-email@gmail.com
 MAIL_PASSWORD=your-app-password
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=info@monarchhotel.com
-MAIL_FROM_NAME="Monarch Hotel"
+MAIL_FROM_ADDRESS=info@royalcresthotel.com
+MAIL_FROM_NAME="Royal Crest Hotel"
 
 # Session
 SESSION_DRIVER=database
@@ -175,11 +175,11 @@ mysql -u root -p
 ```
 
 ```sql
-CREATE DATABASE monarch_hotel_production CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE royal_crest_hotel_production CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-CREATE USER 'monarch_user'@'localhost' IDENTIFIED BY 'STRONG_PASSWORD_HERE';
+CREATE USER 'royal_crest_user'@'localhost' IDENTIFIED BY 'STRONG_PASSWORD_HERE';
 
-GRANT ALL PRIVILEGES ON monarch_hotel_production.* TO 'monarch_user'@'localhost';
+GRANT ALL PRIVILEGES ON royal_crest_hotel_production.* TO 'royal_crest_user'@'localhost';
 
 FLUSH PRIVILEGES;
 
@@ -234,7 +234,7 @@ php artisan storage:link
 
 ### Nginx Configuration
 
-Create `/etc/nginx/sites-available/monarch-hotel`:
+Create `/etc/nginx/sites-available/royal-crest-hotel`:
 
 ```nginx
 server {
@@ -248,7 +248,7 @@ server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
     server_name yourdomain.com www.yourdomain.com;
-    root /var/www/monarch-hotel/public;
+    root /var/www/royal-crest-hotel/public;
 
     # SSL Configuration
     ssl_certificate /etc/ssl/certs/your-certificate.crt;
@@ -297,7 +297,7 @@ server {
 
 Enable site:
 ```bash
-sudo ln -s /etc/nginx/sites-available/monarch-hotel /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/royal-crest-hotel /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
 ```
@@ -432,12 +432,12 @@ Follow Laravel documentation: https://laravel.com/docs/12.x/mail
 
 ### 1. Configure Supervisor (Queue Worker)
 
-Create `/etc/supervisor/conf.d/monarch-hotel.conf`:
+Create `/etc/supervisor/conf.d/royal-crest-hotel.conf`:
 
 ```ini
-[program:monarch-hotel-queue]
+[program:royal-crest-hotel-queue]
 process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/monarch-hotel/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+command=php /var/www/royal-crest-hotel/artisan queue:work --sleep=3 --tries=3 --max-time=3600
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -445,7 +445,7 @@ killasgroup=true
 user=www-data
 numprocs=2
 redirect_stderr=true
-stdout_logfile=/var/www/monarch-hotel/storage/logs/queue.log
+stdout_logfile=/var/www/royal-crest-hotel/storage/logs/queue.log
 stopwaitsecs=3600
 ```
 
@@ -453,7 +453,7 @@ Start queue:
 ```bash
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl start monarch-hotel-queue:*
+sudo supervisorctl start royal-crest-hotel-queue:*
 ```
 
 ### 2. Configure Cron (Task Scheduler)
@@ -464,7 +464,7 @@ sudo crontab -e -u www-data
 
 Add:
 ```cron
-* * * * * cd /var/www/monarch-hotel && php artisan schedule:run >> /dev/null 2>&1
+* * * * * cd /var/www/royal-crest-hotel && php artisan schedule:run >> /dev/null 2>&1
 ```
 
 ---
@@ -473,14 +473,14 @@ Add:
 
 ### 1. Database Backup Script
 
-Create `/var/www/monarch-hotel/backup.sh`:
+Create `/var/www/royal-crest-hotel/backup.sh`:
 
 ```bash
 #!/bin/bash
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-BACKUP_DIR="/var/backups/monarch-hotel"
-DB_NAME="monarch_hotel_production"
-DB_USER="monarch_user"
+BACKUP_DIR="/var/backups/royal-crest-hotel"
+DB_NAME="royal_crest_hotel_production"
+DB_USER="royal_crest_user"
 DB_PASS="YOUR_DB_PASSWORD"
 
 mkdir -p $BACKUP_DIR
@@ -489,7 +489,7 @@ mkdir -p $BACKUP_DIR
 mysqldump -u $DB_USER -p$DB_PASS $DB_NAME | gzip > $BACKUP_DIR/db_$TIMESTAMP.sql.gz
 
 # Backup uploads
-tar -czf $BACKUP_DIR/storage_$TIMESTAMP.tar.gz /var/www/monarch-hotel/storage/app/public
+tar -czf $BACKUP_DIR/storage_$TIMESTAMP.tar.gz /var/www/royal-crest-hotel/storage/app/public
 
 # Keep only last 7 days
 find $BACKUP_DIR -type f -mtime +7 -delete
@@ -499,7 +499,7 @@ echo "Backup completed: $TIMESTAMP"
 
 Make executable:
 ```bash
-chmod +x /var/www/monarch-hotel/backup.sh
+chmod +x /var/www/royal-crest-hotel/backup.sh
 ```
 
 ### 2. Schedule Automated Backups
@@ -600,7 +600,7 @@ php artisan schedule:list
 ### For Future Updates
 
 ```bash
-cd /var/www/monarch-hotel
+cd /var/www/royal-crest-hotel
 
 # Pull latest code
 git pull origin main
@@ -710,7 +710,7 @@ php artisan tinker
 ```
 
 ```php
-$admin = App\Models\User::where('email', 'admin@monarchhotel.com')->first();
+$admin = App\Models\User::where('email', 'admin@royalcresthotel.com')->first();
 $admin->password = bcrypt('NEW_SECURE_PASSWORD');
 $admin->save();
 exit
@@ -743,7 +743,7 @@ exit
 
 ## 🎉 Deployment Complete!
 
-Your Monarch Hotel Booking System is now live and ready to accept bookings!
+Your Royal Crest Hotel Booking System is now live and ready to accept bookings!
 
 **Access URLs:**
 - Public Site: https://yourdomain.com

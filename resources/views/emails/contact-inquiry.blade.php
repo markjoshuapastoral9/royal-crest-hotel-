@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Contact Inquiry — Monarch Hotel</title>
+    <title>New Contact Inquiry — Royal Crest Hotel</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif; background: #101111; margin: 0; padding: 20px 0; }

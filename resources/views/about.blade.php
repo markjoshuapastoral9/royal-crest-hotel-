@@ -15,7 +15,7 @@
         <div class="row align-items-center g-5 mb-6">
             <div class="col-lg-6 fade-up">
                 <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=80"
-                     class="img-fluid rounded-4 shadow-lg" alt="Monarch Hotel Lobby">
+                     class="img-fluid rounded-4 shadow-lg" alt="Royal Crest Hotel Lobby">
             </div>
             <div class="col-lg-6 fade-up">
                 <span class="section-tag">{{ __('site.about_heritage_tag') }}</span>

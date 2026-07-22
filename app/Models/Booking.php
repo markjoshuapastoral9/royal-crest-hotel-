@@ -10,10 +10,10 @@ class Booking extends Model
     use HasFactory;
 
     protected $fillable = [
-        'booking_number', 'user_id', 'room_id',
+        'booking_number', 'user_id', 'room_id', 'package_id',
         'guest_name', 'guest_email', 'guest_phone', 'guest_address',
-        'check_in', 'check_out', 'adults', 'children',
-        'special_requests', 'nights',
+        'check_in', 'check_in_time', 'check_out', 'check_out_time',
+        'adults', 'children', 'special_requests', 'nights',
         'room_price_per_night', 'subtotal', 'discount_amount', 'tax_amount', 'total_amount',
         'promotion_id', 'status', 'payment_method', 'payment_status', 'payment_proof',
         'cancellation_reason', 'cancelled_at', 'confirmed_at', 'checked_in_at', 'checked_out_at',
@@ -38,6 +38,11 @@ class Booking extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
     }
 
     public function room()
@@ -98,6 +103,62 @@ class Booking extends Model
         $year = date('Y');
         $last = self::whereYear('created_at', $year)->count() + 1;
         return 'SUB-' . $year . '-' . str_pad($last, 6, '0', STR_PAD_LEFT);
+    }
+
+    /**
+     * Get check-in datetime (date + time combined as Carbon)
+     */
+    public function getCheckInDatetimeAttribute(): \Carbon\Carbon
+    {
+        $time = $this->attributes['check_in_time'] ?? '14:00';
+        return \Carbon\Carbon::parse(
+            $this->check_in->toDateString() . ' ' . $time
+        );
+    }
+
+    /**
+     * Get check-out datetime (date + time combined as Carbon)
+     */
+    public function getCheckOutDatetimeAttribute(): \Carbon\Carbon
+    {
+        $time = $this->attributes['check_out_time'] ?? '11:00';
+        return \Carbon\Carbon::parse(
+            $this->check_out->toDateString() . ' ' . $time
+        );
+    }
+
+    /**
+     * Get formatted check-in time (12h format) — safe when column missing
+     */
+    public function getCheckInTimeFormattedAttribute(): string
+    {
+        $time = $this->attributes['check_in_time'] ?? '14:00';
+        try {
+            return \Carbon\Carbon::createFromFormat('H:i', $time)->format('g:i A');
+        } catch (\Exception $e) {
+            return '2:00 PM';
+        }
+    }
+
+    /**
+     * Get formatted check-out time (12h format) — safe when column missing
+     */
+    public function getCheckOutTimeFormattedAttribute(): string
+    {
+        $time = $this->attributes['check_out_time'] ?? '11:00';
+        try {
+            return \Carbon\Carbon::createFromFormat('H:i', $time)->format('g:i A');
+        } catch (\Exception $e) {
+            return '11:00 AM';
+        }
+    }
+
+    /**
+     * Check if this booking overlaps with a given datetime range.
+     */
+    public function overlapsWithDatetime(\Carbon\Carbon $newStart, \Carbon\Carbon $newEnd): bool
+    {
+        return $newStart->lt($this->check_out_datetime) && $newEnd->gt($this->check_in_datetime);
     }
 
     /** Scopes */

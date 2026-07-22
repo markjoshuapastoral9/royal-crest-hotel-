@@ -240,6 +240,77 @@
                     <input type="text" name="check_out" class="form-control @error('check_out') is-invalid @enderror" value="{{ old('check_out', $checkOut) }}" required id="checkOut" placeholder="Select check-out date" autocomplete="off" readonly>
                     @error('check_out')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
+                {{-- ── Time selectors ── --}}
+                <div class="col-md-6">
+                    <label class="form-label">
+                        <i class="bi bi-clock text-gold me-1"></i>Check-in Time <span class="text-danger">*</span>
+                    </label>
+                    <select name="check_in_time" id="checkInTime" class="form-select @error('check_in_time') is-invalid @enderror" required>
+                        @php
+                            $checkInTimes = [
+                                '08:00'=>'8:00 AM (Early Check-in)',
+                                '09:00'=>'9:00 AM (Early Check-in)',
+                                '10:00'=>'10:00 AM (Early Check-in)',
+                                '11:00'=>'11:00 AM (Early Check-in)',
+                                '12:00'=>'12:00 PM (Noon)',
+                                '13:00'=>'1:00 PM',
+                                '14:00'=>'2:00 PM (Standard)',
+                                '15:00'=>'3:00 PM',
+                                '16:00'=>'4:00 PM',
+                                '17:00'=>'5:00 PM',
+                                '18:00'=>'6:00 PM',
+                                '19:00'=>'7:00 PM',
+                                '20:00'=>'8:00 PM',
+                                '21:00'=>'9:00 PM',
+                                '22:00'=>'10:00 PM',
+                            ];
+                            $selectedCiTime = old('check_in_time', '14:00');
+                        @endphp
+                        @foreach($checkInTimes as $val => $label)
+                        <option value="{{ $val }}" {{ $selectedCiTime === $val ? 'selected' : '' }}>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    @error('check_in_time')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">
+                        <i class="bi bi-clock text-gold me-1"></i>Check-out Time <span class="text-danger">*</span>
+                    </label>
+                    <select name="check_out_time" id="checkOutTime" class="form-select @error('check_out_time') is-invalid @enderror" required>
+                        @php
+                            $checkOutTimes = [
+                                '06:00'=>'6:00 AM',
+                                '07:00'=>'7:00 AM',
+                                '08:00'=>'8:00 AM',
+                                '09:00'=>'9:00 AM',
+                                '10:00'=>'10:00 AM',
+                                '11:00'=>'11:00 AM (Standard)',
+                                '12:00'=>'12:00 PM (Late Check-out)',
+                                '13:00'=>'1:00 PM (Late Check-out)',
+                                '14:00'=>'2:00 PM (Late Check-out)',
+                            ];
+                            $selectedCoTime = old('check_out_time', '11:00');
+                        @endphp
+                        @foreach($checkOutTimes as $val => $label)
+                        <option value="{{ $val }}" {{ $selectedCoTime === $val ? 'selected' : '' }}>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    @error('check_out_time')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+
+                {{-- Time info note --}}
+                <div class="col-12">
+                    <div class="d-flex align-items-start gap-2 p-3 rounded-3" style="background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);font-size:.8rem;color:rgba(192,192,192,.8);">
+                        <i class="bi bi-info-circle text-gold mt-1 flex-shrink-0"></i>
+                        <div>
+                            Standard check-in is <strong class="text-white">2:00 PM</strong> · Standard check-out is <strong class="text-white">11:00 AM</strong>.
+                            If you select the same date for both, check-out time must be <strong class="text-white">after</strong> check-in time.
+                            Early check-in / late check-out may be subject to an additional fee.
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-12">
                     {{-- Live availability feedback --}}
                     <div id="availAlert">
@@ -493,8 +564,20 @@
                 @endif
             </p>
             <div class="row g-2 mb-3">
-                <div class="col-6"><div class="summary-dates"><div class="label">{{ __('site.bk_checkin') }}</div><div class="value" id="summCheckIn">{{ \Carbon\Carbon::parse($checkIn)->format('M d, Y') }}</div></div></div>
-                <div class="col-6"><div class="summary-dates"><div class="label">{{ __('site.bk_checkout') }}</div><div class="value" id="summCheckOut">{{ \Carbon\Carbon::parse($checkOut)->format('M d, Y') }}</div></div></div>
+                <div class="col-6">
+                    <div class="summary-dates">
+                        <div class="label">{{ __('site.bk_checkin') }}</div>
+                        <div class="value" id="summCheckIn">{{ \Carbon\Carbon::parse($checkIn)->format('M d, Y') }}</div>
+                        <div style="color:var(--gold);font-size:.7rem;margin-top:.2rem;" id="summCheckInTime">2:00 PM</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="summary-dates">
+                        <div class="label">{{ __('site.bk_checkout') }}</div>
+                        <div class="value" id="summCheckOut">{{ \Carbon\Carbon::parse($checkOut)->format('M d, Y') }}</div>
+                        <div style="color:var(--gold);font-size:.7rem;margin-top:.2rem;" id="summCheckOutTime">11:00 AM</div>
+                    </div>
+                </div>
             </div>
             <div>
                 <div class="summary-line muted">
@@ -527,18 +610,44 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
 const pricePerNight = {{ $displayRoom->price_per_night }};
-const bookedRanges  = @json($bookedRanges); // fully-blocked ranges (all units taken)
+const bookedRanges  = @json($bookedRanges);
 const totalUnits    = {{ $totalUnits ?? 5 }};
 let discountAmount  = 0;
 
-// ── Build a flat Set of every booked date string (YYYY-MM-DD) ───────────────
-// A date is "booked" if it falls within any active booking's check_in..check_out-1
-// (check_out day itself is free — guests leave that morning)
+// ── Build booked ranges as datetime-aware objects ─────────────────────────────
+// Each range now includes times so we can check overlap precisely
+// Format from server: { from: 'YYYY-MM-DD', to: 'YYYY-MM-DD' }
+// We'll fetch actual check_in_time/check_out_time from the server-side bookedRanges
+// For now we use the standard times (14:00 check-in, 11:00 check-out)
+function buildBookedDatetimes(ranges) {
+    return ranges.map(({ from, to, ci_time, co_time }) => ({
+        start : new Date(from + 'T' + (ci_time || '14:00') + ':00'),
+        end   : new Date(to   + 'T' + (co_time || '11:00') + ':00'),
+    }));
+}
+
+const bookedDatetimes = buildBookedDatetimes(bookedRanges);
+
+// ── Check overlap with time precision ────────────────────────────────────────
+// Two bookings overlap if: newStart < existingEnd AND newEnd > existingStart
+function hasConflict(ciDate, ciTime, coDate, coTime) {
+    if (!ciDate || !coDate) return false;
+    const newStart = new Date(ciDate + 'T' + (ciTime || '14:00') + ':00');
+    const newEnd   = new Date(coDate + 'T' + (coTime || '11:00') + ':00');
+    if (newEnd <= newStart) return true; // same-day invalid
+
+    return bookedDatetimes.some(({ start, end }) =>
+        newStart < end && newEnd > start
+    );
+}
+
+// ── Calendar disabled dates (date-level, conservative) ───────────────────────
+// Only disable a date on the calendar if ALL time slots on that day are blocked
 function buildBookedSet(ranges) {
     const set = new Set();
     ranges.forEach(({ from, to }) => {
         let cur = new Date(from + 'T00:00:00');
-        const end = new Date(to   + 'T00:00:00'); // exclusive: check-out day is free
+        const end = new Date(to + 'T00:00:00');
         while (cur < end) {
             set.add(cur.toISOString().split('T')[0]);
             cur.setDate(cur.getDate() + 1);
@@ -546,65 +655,72 @@ function buildBookedSet(ranges) {
     });
     return set;
 }
-
 const bookedSet = buildBookedSet(bookedRanges);
-
-// ── Check whether a given check-in/check-out range conflicts ────────────────
-function hasConflict(ciStr, coStr) {
-    if (!ciStr || !coStr) return false;
-    let cur = new Date(ciStr + 'T00:00:00');
-    const end = new Date(coStr + 'T00:00:00');
-    while (cur < end) {
-        if (bookedSet.has(cur.toISOString().split('T')[0])) return true;
-        cur.setDate(cur.getDate() + 1);
-    }
-    return false;
-}
-
-// ── Recalculate summary panel ────────────────────────────────────────────────
-function recalc() {
-    const ci = document.getElementById('checkIn').value;
-    const co = document.getElementById('checkOut').value;
-    if (!ci || !co) return;
-
-    const nights = Math.max(1, Math.round((new Date(co) - new Date(ci)) / 86400000));
-    const sub    = nights * pricePerNight;
-    const afterDisc = sub - discountAmount;
-    const tax    = afterDisc * 0.12;
-    const total  = afterDisc + tax;
-
-    document.getElementById('summNights').textContent   = nights;
-    document.getElementById('summSubtotal').textContent = '₱' + sub.toLocaleString('en-PH',{minimumFractionDigits:2});
-    document.getElementById('summTax').textContent      = '₱' + tax.toLocaleString('en-PH',{minimumFractionDigits:2});
-    document.getElementById('summTotal').textContent    = '₱' + total.toLocaleString('en-PH',{minimumFractionDigits:2});
-
-    const ci_d = new Date(ci + 'T00:00:00'), co_d = new Date(co + 'T00:00:00');
-    document.getElementById('summCheckIn').textContent  = ci_d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-    document.getElementById('summCheckOut').textContent = co_d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-
-    // ── Live availability alert ────────────────────────────────────────────────
-    const alert = document.getElementById('availAlert');
-    const msg   = document.getElementById('availMsg');
-    if (hasConflict(ci, co)) {
-        alert.className = 'avail-busy show';
-        msg.textContent = 'All ' + totalUnits + ' units are fully booked for these dates. Please choose different dates — the red days on the calendar are unavailable.';
-        document.querySelector('button[type="submit"]').disabled = true;
-    } else {
-        alert.className = 'avail-ok show';
-        msg.textContent = nights + (nights === 1 ? ' night' : ' nights') + ' — these dates are available!';
-        document.querySelector('button[type="submit"]').disabled = false;
-    }
-}
-
-// ── Flatpickr config shared ───────────────────────────────────────────────────
-const today = new Date(); today.setHours(0,0,0,0);
-
-// Disable function: grey-out any day that is in bookedSet
 function isBooked(date) {
     return bookedSet.has(date.toISOString().split('T')[0]);
 }
 
-// ── Check-in picker ───────────────────────────────────────────────────────────
+// ── Helper: format 24h time → 12h AM/PM ─────────────────────────────────────
+function fmt24to12(time24) {
+    if (!time24) return '';
+    const [h, m] = time24.split(':').map(Number);
+    const suffix = h >= 12 ? 'PM' : 'AM';
+    const h12    = h % 12 || 12;
+    return `${h12}:${String(m).padStart(2,'0')} ${suffix}`;
+}
+
+// ── Recalculate summary panel ────────────────────────────────────────────────
+function recalc() {
+    const ci     = document.getElementById('checkIn').value;
+    const co     = document.getElementById('checkOut').value;
+    const ciTime = document.getElementById('checkInTime')?.value  || '14:00';
+    const coTime = document.getElementById('checkOutTime')?.value || '11:00';
+    if (!ci || !co) return;
+
+    // Time-aware duration in hours → nights (each night = 24h block)
+    const startDt = new Date(ci + 'T' + ciTime + ':00');
+    const endDt   = new Date(co + 'T' + coTime + ':00');
+    const diffHrs = (endDt - startDt) / 3600000;
+    const nights  = Math.max(1, Math.ceil(diffHrs / 24));
+
+    const sub       = nights * pricePerNight;
+    const afterDisc = sub - discountAmount;
+    const tax       = afterDisc * 0.12;
+    const total     = afterDisc + tax;
+
+    document.getElementById('summNights').textContent    = nights;
+    document.getElementById('summSubtotal').textContent  = '₱' + sub.toLocaleString('en-PH',{minimumFractionDigits:2});
+    document.getElementById('summTax').textContent       = '₱' + tax.toLocaleString('en-PH',{minimumFractionDigits:2});
+    document.getElementById('summTotal').textContent     = '₱' + total.toLocaleString('en-PH',{minimumFractionDigits:2});
+
+    // Date labels
+    const fmt = { month:'short', day:'numeric', year:'numeric' };
+    document.getElementById('summCheckIn').textContent   = new Date(ci + 'T00:00:00').toLocaleDateString('en-US', fmt);
+    document.getElementById('summCheckOut').textContent  = new Date(co + 'T00:00:00').toLocaleDateString('en-US', fmt);
+    document.getElementById('summCheckInTime').textContent  = fmt24to12(ciTime);
+    document.getElementById('summCheckOutTime').textContent = fmt24to12(coTime);
+
+    // ── Live conflict check (time-aware) ──────────────────────────────────────
+    const alert = document.getElementById('availAlert');
+    const msg   = document.getElementById('availMsg');
+    const btn   = document.querySelector('button[type="submit"]');
+
+    if (diffHrs <= 0) {
+        alert.className = 'avail-busy show';
+        msg.textContent = 'Check-out time must be after check-in time.';
+        if (btn) btn.disabled = true;
+    } else if (hasConflict(ci, ciTime, co, coTime)) {
+        alert.className = 'avail-busy show';
+        msg.textContent = `All ${totalUnits} units are fully booked for the selected dates and times. Try adjusting the check-in/check-out time or date.`;
+        if (btn) btn.disabled = true;
+    } else {
+        alert.className = 'avail-ok show';
+        msg.textContent = `${nights} night${nights>1?'s':''} — available! Check-in ${fmt24to12(ciTime)}, Check-out ${fmt24to12(coTime)}.`;
+        if (btn) btn.disabled = false;
+    }
+}
+
+// ── Flatpickr ────────────────────────────────────────────────────────────────
 const fpIn = flatpickr('#checkIn', {
     dateFormat  : 'Y-m-d',
     minDate     : 'today',
@@ -616,7 +732,6 @@ const fpIn = flatpickr('#checkIn', {
         const next = new Date(dates[0]);
         next.setDate(next.getDate() + 1);
         fpOut.set('minDate', next);
-        // If checkout is now before new checkin, advance it
         if (fpOut.selectedDates[0] && fpOut.selectedDates[0] <= dates[0]) {
             fpOut.setDate(next, true);
         }
@@ -624,27 +739,34 @@ const fpIn = flatpickr('#checkIn', {
     },
 });
 
-// ── Check-out picker ──────────────────────────────────────────────────────────
 const fpOut = flatpickr('#checkOut', {
     dateFormat  : 'Y-m-d',
     minDate     : new Date(new Date('{{ $checkIn }}').getTime() + 86400000),
     defaultDate : '{{ $checkOut }}',
     disableMobile: true,
     disable: [isBooked],
-    onChange(dates) {
-        if (!dates[0]) return;
-        recalc();
-    },
+    onChange() { recalc(); },
 });
+
+// Re-run recalc when time dropdowns change
+document.getElementById('checkInTime')?.addEventListener('change', recalc);
+document.getElementById('checkOutTime')?.addEventListener('change', recalc);
 
 // Run on load
 recalc();
 
 // ── Promo code ────────────────────────────────────────────────────────────────
 function applyPromo() {
-    const code   = document.getElementById('promoInput').value.trim().toUpperCase();
-    const nights = Math.max(1, Math.round((new Date(document.getElementById('checkOut').value) - new Date(document.getElementById('checkIn').value)) / 86400000));
-    const amount = nights * pricePerNight;
+    const ciTime = document.getElementById('checkInTime')?.value  || '14:00';
+    const coTime = document.getElementById('checkOutTime')?.value || '11:00';
+    const ci     = document.getElementById('checkIn').value;
+    const co     = document.getElementById('checkOut').value;
+    const startDt = new Date(ci + 'T' + ciTime + ':00');
+    const endDt   = new Date(co + 'T' + coTime + ':00');
+    const diffHrs = (endDt - startDt) / 3600000;
+    const nights  = Math.max(1, Math.ceil(diffHrs / 24));
+    const amount  = nights * pricePerNight;
+    const code    = document.getElementById('promoInput').value.trim().toUpperCase();
     if (!code) return;
 
     fetch('{{ route("booking.apply-promo") }}', {

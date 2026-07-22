@@ -22,7 +22,7 @@ class FacilitySeeder extends Seeder
             [
                 'name'            => 'Restaurant & Dining',
                 'slug'            => 'restaurant',
-                'description'     => 'Subo\'s signature restaurant serves an exquisite array of Filipino and international cuisine. From hearty breakfast buffets to intimate candlelit dinners, our culinary team crafts every dish with passion.',
+                'description'     => 'The Royal Crest signature restaurant serves an exquisite array of Filipino and international cuisine. From hearty breakfast buffets to intimate candlelit dinners, our culinary team crafts every dish with passion.',
                 'icon'            => 'bi-cup-hot',
                 'operating_hours' => '6:00 AM – 10:30 PM',
                 'is_featured'     => true,
@@ -40,7 +40,7 @@ class FacilitySeeder extends Seeder
             [
                 'name'            => 'Spa & Wellness',
                 'slug'            => 'spa',
-                'description'     => 'Surrender to tranquility at Subo Spa. Our expert therapists offer a curated menu of massages, body treatments, and facials using locally sourced, natural ingredients.',
+                'description'     => 'Surrender to tranquility at Royal Crest Spa. Our expert therapists offer a curated menu of massages, body treatments, and facials using locally sourced, natural ingredients.',
                 'icon'            => 'bi-flower1',
                 'operating_hours' => '9:00 AM – 9:00 PM',
                 'is_featured'     => true,

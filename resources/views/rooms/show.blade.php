@@ -84,8 +84,44 @@
 
                 <!-- Amenities -->
                 @if($room->amenities->count())
-                <div class="rounded-4 p-4 shadow-sm" style="background:var(--surface,#1a1214);border:1px solid var(--border);">
+                <div class="rounded-4 p-4 shadow-sm mb-4" style="background:var(--surface,#1a1214);border:1px solid var(--border);">
                     <h4 class="fw-bold mb-4 text-white">{{ __('site.rs_amenities') }}</h4>
+                    
+                    @if($room->price_per_night >= 15500)
+                    <!-- All-Day Dining for Premium Suites -->
+                    <div class="alert mb-4" style="background:linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.15));border:2px solid rgba(201,168,76,0.5);border-radius:12px;padding:1rem;">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-stars text-gold" style="font-size:2rem;"></i>
+                            <div>
+                                <h6 class="text-gold mb-1" style="font-weight:700;"><i class="bi bi-check-circle-fill me-1"></i>All-Day Dining Included</h6>
+                                <p class="text-muted mb-0 small">Includes breakfast, lunch, and dinner for all guests throughout your stay</p>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif($room->price_per_night >= 8000)
+                    <!-- 2 Meals for Suites -->
+                    <div class="alert mb-4" style="background:linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.1));border:2px solid rgba(201,168,76,0.4);border-radius:12px;padding:1rem;">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-cup-hot text-gold" style="font-size:2rem;"></i>
+                            <div>
+                                <h6 class="text-gold mb-1" style="font-weight:700;"><i class="bi bi-check-circle-fill me-1"></i>Daily Meals Included</h6>
+                                <p class="text-muted mb-0 small">Includes breakfast and dinner for all guests throughout your stay</p>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif($room->price_per_night >= 5000)
+                    <!-- Breakfast Only for Standard Rooms -->
+                    <div class="alert mb-4" style="background:linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.08));border:2px solid rgba(201,168,76,0.3);border-radius:12px;padding:1rem;">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-sunrise text-gold" style="font-size:2rem;"></i>
+                            <div>
+                                <h6 class="text-gold mb-1" style="font-weight:700;"><i class="bi bi-check-circle-fill me-1"></i>Complimentary Breakfast meal</h6>
+                                <p class="text-muted mb-0 small">Includes breakfast for all guests throughout your stay</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    
                     <div class="row g-2">
                         @foreach($room->amenities as $amenity)
                         <div class="col-6 col-md-4">
@@ -116,6 +152,40 @@
                             {{ ucfirst($room->status) }}
                         </span>
                     </div>
+                    @if($room->price_per_night >= 15500)
+                    <!-- 3 Meals Included for Premium Suites -->
+                    <div class="alert mb-3" style="background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.5);border-radius:10px;padding:0.75rem;">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-stars text-gold" style="font-size:1.5rem;"></i>
+                            <div>
+                                <div class="text-white fw-bold small">All-Day Dining Included</div>
+                                <div class="text-muted" style="font-size:0.7rem;">Breakfast, lunch & dinner</div>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif($room->price_per_night >= 8000)
+                    <!-- 2 Meals Included for Suites -->
+                    <div class="alert mb-3" style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);border-radius:10px;padding:0.75rem;">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-cup-hot text-gold" style="font-size:1.5rem;"></i>
+                            <div>
+                                <div class="text-white fw-bold small">2 Meals Included Daily</div>
+                                <div class="text-muted" style="font-size:0.7rem;">Breakfast & dinner</div>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif($room->price_per_night >= 5000)
+                    <!-- Breakfast Only for Standard Rooms -->
+                    <div class="alert mb-3" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:0.75rem;">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-sunrise text-gold" style="font-size:1.5rem;"></i>
+                            <div>
+                                <div class="text-white fw-bold small">Breakfast meal Included</div>
+                                <div class="text-muted" style="font-size:0.7rem;">Complimentary morning meal</div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
 
                     @if($room->status === 'available')
                     <form action="{{ route('booking.create', $room) }}" method="GET" id="bookForm">

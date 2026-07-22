@@ -20,9 +20,9 @@ class SettingsSeeder extends Seeder
             ['key' => 'check_out_time',    'value' => '12:00 PM',                               'group' => 'policy'],
             ['key' => 'tax_rate',          'value' => '12',                                     'group' => 'policy'],
             ['key' => 'currency',          'value' => '₱',                                      'group' => 'general'],
-            ['key' => 'facebook_url',      'value' => 'https://facebook.com/subohotel',      'group' => 'social'],
-            ['key' => 'instagram_url',     'value' => 'https://instagram.com/subohotel',     'group' => 'social'],
-            ['key' => 'twitter_url',       'value' => 'https://twitter.com/subohotel',       'group' => 'social'],
+            ['key' => 'facebook_url',      'value' => 'https://facebook.com/royalcresthotel',      'group' => 'social'],
+            ['key' => 'instagram_url',     'value' => 'https://instagram.com/royalcresthotel',     'group' => 'social'],
+            ['key' => 'twitter_url',       'value' => 'https://twitter.com/royalcresthotel',       'group' => 'social'],
             ['key' => 'google_maps_url',   'value' => 'https://maps.google.com/?q=Calasiao+Pangasinan', 'group' => 'general'],
         ];
 

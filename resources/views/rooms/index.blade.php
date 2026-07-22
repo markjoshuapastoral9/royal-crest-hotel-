@@ -107,10 +107,22 @@
 
             <!-- Room Grid -->
             <div class="col-lg-9">
-                <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
                     <span class="result-count">
                         {{ $rooms->total() }} {{ $rooms->total() != 1 ? __('site.ri_rooms_found') : __('site.ri_room_found') }}
                     </span>
+                </div>
+
+                {{-- Meal Inclusion Legend --}}
+                <div class="d-flex flex-wrap gap-2 mb-4 p-3 rounded-3" style="background:var(--surface,#1a1214);border:1px solid var(--border);font-size:.75rem;">
+                    <span style="color:var(--text-sec);">🍽️ <strong class="text-white">Meal Inclusions:</strong></span>
+                    <span style="color:var(--text-sec);">₱3k–4,999 = <span style="color:#f87171;">No meals</span></span>
+                    <span style="color:rgba(255,255,255,.2);">|</span>
+                    <span style="color:var(--text-sec);">₱5k–7,999 = <span style="background:rgba(201,168,76,0.12);color:#C9A84C;border:1px solid rgba(201,168,76,0.3);border-radius:4px;padding:1px 6px;"><i class="bi bi-sunrise me-1"></i>Breakfast meal</span></span>
+                    <span style="color:rgba(255,255,255,.2);">|</span>
+                    <span style="color:var(--text-sec);">₱8k–15,499 = <span style="background:rgba(201,168,76,0.2);color:#C9A84C;border:1px solid rgba(201,168,76,0.4);border-radius:4px;padding:1px 6px;"><i class="bi bi-cup-hot me-1"></i>2 Meals</span></span>
+                    <span style="color:rgba(255,255,255,.2);">|</span>
+                    <span style="color:var(--text-sec);">₱15,500+ = <span style="background:rgba(201,168,76,0.25);color:#C9A84C;border:1px solid rgba(201,168,76,0.5);border-radius:4px;padding:1px 6px;"><i class="bi bi-stars me-1"></i>3 Meals</span></span>
                 </div>
                 @if($rooms->count())
                 <div class="row g-4">
@@ -132,6 +144,13 @@
                                     <span class="badge bg-light text-dark border" style="font-size:.7rem;"><i class="bi bi-moon me-1"></i>{{ $room->beds }} {{ $room->beds > 1 ? __('site.rooms_beds') : __('site.rooms_bed') }}</span>
                                     @if($room->has_wifi)<span class="badge bg-light text-dark border" style="font-size:.7rem;"><i class="bi bi-wifi"></i> WiFi</span>@endif
                                     @if($room->has_aircon)<span class="badge bg-light text-dark border" style="font-size:.7rem;"><i class="bi bi-wind"></i> A/C</span>@endif
+                                    @if($room->price_per_night >= 15500)
+                                    <span class="badge" style="background:rgba(201,168,76,0.25);color:#C9A84C;font-size:.7rem;border:1px solid rgba(201,168,76,0.5);font-weight:700;"><i class="bi bi-stars me-1"></i>3 Meals</span>
+                                    @elseif($room->price_per_night >= 8000)
+                                    <span class="badge" style="background:rgba(201,168,76,0.2);color:#C9A84C;font-size:.7rem;border:1px solid rgba(201,168,76,0.4);font-weight:600;"><i class="bi bi-cup-hot me-1"></i>2 Meals</span>
+                                    @elseif($room->price_per_night >= 5000)
+                                    <span class="badge" style="background:rgba(201,168,76,0.12);color:#C9A84C;font-size:.7rem;border:1px solid rgba(201,168,76,0.3);font-weight:600;"><i class="bi bi-sunrise me-1"></i>Breakfast meal</span>
+                                    @endif
                                 </div>
                                 @php $avail = $room->available_units ?? $room->total_units ?? 5; @endphp
                                 <div class="mb-2">

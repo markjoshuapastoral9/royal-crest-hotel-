@@ -51,25 +51,47 @@ class Room extends Model
         return $this->morphMany(Gallery::class, 'imageable');
     }
 
-    /** Check if room is available for given dates */
-    public function isAvailableFor(string $checkIn, string $checkOut, ?int $excludeBookingId = null): bool
-    {
-        $query = $this->bookings()
-            ->whereNotIn('status', ['cancelled', 'completed'])
-            ->where(function ($q) use ($checkIn, $checkOut) {
-                $q->whereBetween('check_in', [$checkIn, $checkOut])
-                  ->orWhereBetween('check_out', [$checkIn, $checkOut])
-                  ->orWhere(function ($q2) use ($checkIn, $checkOut) {
-                      $q2->where('check_in', '<=', $checkIn)
-                         ->where('check_out', '>=', $checkOut);
-                  });
-            });
+    /**
+     * Check if room is available for given dates AND times.
+     * Gracefully degrades to date-only when time columns don't exist yet.
+     */
+    public function isAvailableFor(
+        string $checkIn,
+        string $checkOut,
+        string $checkInTime  = '14:00',
+        string $checkOutTime = '11:00',
+        ?int $excludeBookingId = null
+    ): bool {
+        $newStart = \Carbon\Carbon::parse("{$checkIn} {$checkInTime}");
+        $newEnd   = \Carbon\Carbon::parse("{$checkOut} {$checkOutTime}");
 
-        if ($excludeBookingId) {
-            $query->where('id', '!=', $excludeBookingId);
+        // Only select time columns if they exist
+        static $hasTimes = null;
+        if ($hasTimes === null) {
+            $hasTimes = \Illuminate\Support\Facades\Schema::hasColumn('bookings', 'check_in_time');
         }
 
-        return $query->count() === 0;
+        $cols = $hasTimes
+            ? ['check_in', 'check_out', 'check_in_time', 'check_out_time']
+            : ['check_in', 'check_out'];
+
+        $activeBookings = $this->bookings()
+            ->whereNotIn('status', ['cancelled', 'completed'])
+            ->when($excludeBookingId, fn($q) => $q->where('id', '!=', $excludeBookingId))
+            ->get($cols);
+
+        foreach ($activeBookings as $b) {
+            $ciTime = $hasTimes ? ($b->attributes['check_in_time']  ?? '14:00') : '14:00';
+            $coTime = $hasTimes ? ($b->attributes['check_out_time'] ?? '11:00') : '11:00';
+            $existStart = \Carbon\Carbon::parse(\Carbon\Carbon::parse($b->check_in)->toDateString()  . ' ' . $ciTime);
+            $existEnd   = \Carbon\Carbon::parse(\Carbon\Carbon::parse($b->check_out)->toDateString() . ' ' . $coTime);
+
+            if ($newStart->lt($existEnd) && $newEnd->gt($existStart)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /** Scopes */

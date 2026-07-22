@@ -79,10 +79,31 @@
             padding: 0;
             margin: 0;
         }
-        #mainNav .nav-link { color: rgba(255,255,255,.75) !important; font-size: .82rem; font-weight: 500; letter-spacing: .8px; text-transform: uppercase; padding: 6px 14px !important; transition: color .3s; }
+        #mainNav .nav-link { color: rgba(255,255,255,.75) !important; font-size: .82rem; font-weight: 500; letter-spacing: .8px; text-transform: uppercase; padding: 6px 14px !important; transition: color .3s, transform .2s; position: relative; }
         #mainNav .nav-link:hover, #mainNav .nav-link.active { color: var(--gold) !important; }
-        #mainNav .btn-book { background: var(--gold); color: #101111 !important; border-radius: 8px; padding: 8px 22px !important; font-weight: 700; font-size: .82rem; letter-spacing: .5px; }
-        #mainNav .btn-book:hover { background: var(--gold-light); box-shadow: 0 4px 18px rgba(166,130,74,.4); }
+
+        /* Gold underline slide-in on hover */
+        #mainNav .nav-item:not(.dropdown) .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 14px; right: 14px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform .25s ease;
+        }
+        #mainNav .nav-item:not(.dropdown) .nav-link:hover::after,
+        #mainNav .nav-item:not(.dropdown) .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        /* Nav link subtle lift on hover */
+        #mainNav .nav-link:hover { transform: translateY(-1px); }
+
+        #mainNav .btn-book { background: var(--gold); color: #101111 !important; border-radius: 8px; padding: 8px 22px !important; font-weight: 700; font-size: .82rem; letter-spacing: .5px; transition: all .3s; }
+        #mainNav .btn-book:hover { background: var(--gold-light); box-shadow: 0 4px 18px rgba(166,130,74,.4); transform: translateY(-2px); }
 
         /* Override Bootstrap nav-pills blue with gold */
         .nav-pills .nav-link.active,
@@ -126,6 +147,130 @@
         #langDropdown { border-radius: 8px; transition: color .3s; }
         .dropdown-menu .dropdown-item:hover { background: rgba(166,130,74,.12) !important; color: var(--gold) !important; }
         .dropdown-menu .dropdown-item.active { background: rgba(166,130,74,.18) !important; }
+
+        /* Mega Menu Styles */
+        .mega-menu {
+            background: var(--surface, #1a1214);
+            border: 1px solid var(--border, rgba(255,255,255,0.1));
+            border-radius: 12px;
+            min-width: 320px;
+            margin-top: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            animation: megaFadeIn .22s cubic-bezier(.16,1,.3,1);
+            transform-origin: top center;
+        }
+
+        @keyframes megaFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px) scaleY(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scaleY(1);
+            }
+        }
+
+        /* Stagger each menu item */
+        .mega-menu-content .mega-menu-item:nth-child(1) { animation: itemSlideIn .2s ease both .04s; }
+        .mega-menu-content .mega-menu-item:nth-child(2) { animation: itemSlideIn .2s ease both .09s; }
+        .mega-menu-content .mega-menu-item:nth-child(3) { animation: itemSlideIn .2s ease both .14s; }
+        .mega-menu-content .mega-menu-item:nth-child(4) { animation: itemSlideIn .2s ease both .19s; }
+        .mega-menu-content .mega-menu-item:nth-child(5) { animation: itemSlideIn .2s ease both .24s; }
+
+        @keyframes itemSlideIn {
+            from { opacity: 0; transform: translateX(-8px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .mega-menu-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .mega-menu-item {
+            text-decoration: none;
+            color: var(--text-pri, #E6E2DA);
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .mega-menu-item:hover {
+            background: rgba(166,130,74,0.08);
+            border-color: rgba(166,130,74,0.2);
+            color: var(--gold);
+            transform: translateX(3px);
+        }
+
+        .mega-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(166,130,74,0.12);
+            border: 1px solid rgba(166,130,74,0.25);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.25s cubic-bezier(.34,1.56,.64,1);
+        }
+
+        .mega-menu-item:hover .mega-icon {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #101111;
+            transform: scale(1.12) rotate(-4deg);
+        }
+
+        .mega-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 0.15rem;
+            letter-spacing: 0.3px;
+            transition: color .2s;
+        }
+
+        .mega-desc {
+            font-size: 0.75rem;
+            color: var(--text-sec, #B8AFA6);
+            line-height: 1.3;
+        }
+
+        .mega-menu-item:hover .mega-title {
+            color: var(--gold);
+        }
+
+        /* Dropdown arrow animation */
+        .dropdown-toggle::after {
+            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+        }
+
+        .dropdown-toggle[aria-expanded="true"]::after {
+            transform: rotate(180deg);
+        }
+
+        /* Gold glow pulse on active dropdown toggle */
+        .dropdown-toggle[aria-expanded="true"] {
+            color: var(--gold) !important;
+        }
+
+        /* Language dropdown animation */
+        .dropdown-menu {
+            animation: megaFadeIn .2s cubic-bezier(.16,1,.3,1);
+        }
+
+        /* Notification bell wiggle on new notification */
+        @keyframes bellWiggle {
+            0%,100% { transform: rotate(0); }
+            20%      { transform: rotate(15deg); }
+            40%      { transform: rotate(-12deg); }
+            60%      { transform: rotate(8deg); }
+            80%      { transform: rotate(-5deg); }
+        }
+        .bell-notify { animation: bellWiggle .6s ease; }
 
         /* Toast */
         .toast-container { z-index: 9999; }
@@ -199,6 +344,37 @@
             #mainNav .navbar-toggler { padding: 6px 10px; border: none; }
             #mainNav .navbar-collapse { background: rgba(10,10,11,.97); border-radius: 12px; padding: 1rem; margin-top: .5rem; border: 1px solid rgba(255,255,255,.08); }
 
+            /* Mega menu mobile */
+            .mega-menu {
+                position: static !important;
+                width: 100% !important;
+                margin-top: 0.5rem;
+                border-radius: 8px;
+            }
+
+            .mega-menu-content {
+                max-height: 400px;
+                overflow-y: auto;
+            }
+
+            .mega-menu-item {
+                padding: 0.75rem !important;
+            }
+
+            .mega-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            .mega-title {
+                font-size: 0.85rem;
+            }
+
+            .mega-desc {
+                font-size: 0.7rem;
+            }
+
             /* Footer columns */
             footer .col-lg-4, footer .col-lg-2, footer .col-lg-3 { margin-bottom: 1.5rem; }
 
@@ -238,8 +414,114 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">{{ __('site.nav_home') }}</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('rooms*') ? 'active' : '' }}" href="{{ route('rooms.index') }}">{{ __('site.nav_rooms') }}</a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->routeIs('facilities') ? 'active' : '' }}" href="{{ route('facilities') }}">{{ __('site.nav_facilities') }}</a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->routeIs('gallery') ? 'active' : '' }}" href="{{ route('gallery') }}">{{ __('site.nav_gallery') }}</a></li>
+                    
+                    <!-- Packages Mega Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->routeIs('packages*') ? 'active' : '' }}" 
+                           href="#" 
+                           id="packagesDropdown" 
+                           role="button" 
+                           data-bs-toggle="dropdown" 
+                           aria-expanded="false">
+                            Packages
+                        </a>
+                        <div class="dropdown-menu mega-menu p-0" aria-labelledby="packagesDropdown">
+                            <div class="mega-menu-content p-3">
+                                <a href="{{ route('packages.index') }}" class="mega-menu-item d-flex align-items-start gap-3 p-3 rounded-3">
+                                    <div class="mega-icon">
+                                        <i class="bi bi-gift"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="mega-title">All Packages</div>
+                                        <div class="mega-desc">Browse our exclusive deals</div>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto" style="color:rgba(255,255,255,0.3);"></i>
+                                </a>
+                                
+                                <a href="{{ route('facilities') }}" class="mega-menu-item d-flex align-items-start gap-3 p-3 rounded-3">
+                                    <div class="mega-icon">
+                                        <i class="bi bi-building"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="mega-title">Facilities</div>
+                                        <div class="mega-desc">Explore our hotel amenities</div>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto" style="color:rgba(255,255,255,0.3);"></i>
+                                </a>
+                                
+                                <a href="{{ route('gallery') }}" class="mega-menu-item d-flex align-items-start gap-3 p-3 rounded-3">
+                                    <div class="mega-icon">
+                                        <i class="bi bi-images"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="mega-title">Gallery</div>
+                                        <div class="mega-desc">Browse a land of packages</div>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto" style="color:rgba(255,255,255,0.3);"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Dining Mega Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->routeIs('dining*') ? 'active' : '' }}" 
+                           href="#" 
+                           id="diningDropdown" 
+                           role="button" 
+                           data-bs-toggle="dropdown" 
+                           aria-expanded="false">
+                            Dining
+                        </a>
+                        <div class="dropdown-menu mega-menu p-0" aria-labelledby="diningDropdown">
+                            <div class="mega-menu-content p-3">
+                                <a href="{{ route('dining.restaurant') }}" class="mega-menu-item d-flex align-items-start gap-3 p-3 rounded-3">
+                                    <div class="mega-icon">
+                                        <i class="bi bi-shop"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="mega-title">Our Restaurant</div>
+                                        <div class="mega-desc">Experience fine dining excellence</div>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto" style="color:rgba(255,255,255,0.3);"></i>
+                                </a>
+                                
+                                <a href="{{ route('dining.menu') }}" class="mega-menu-item d-flex align-items-start gap-3 p-3 rounded-3">
+                                    <div class="mega-icon">
+                                        <i class="bi bi-book"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="mega-title">Menu</div>
+                                        <div class="mega-desc">View our culinary offerings</div>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto" style="color:rgba(255,255,255,0.3);"></i>
+                                </a>
+                                
+                                <a href="{{ route('dining.private') }}" class="mega-menu-item d-flex align-items-start gap-3 p-3 rounded-3">
+                                    <div class="mega-icon">
+                                        <i class="bi bi-door-closed"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="mega-title">Private Dining</div>
+                                        <div class="mega-desc">Exclusive dining experiences</div>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto" style="color:rgba(255,255,255,0.3);"></i>
+                                </a>
+                                
+                                <a href="{{ route('dining.room-service') }}" class="mega-menu-item d-flex align-items-start gap-3 p-3 rounded-3">
+                                    <div class="mega-icon">
+                                        <i class="bi bi-bell"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="mega-title">Room Service</div>
+                                        <div class="mega-desc">Dining in the comfort of your room</div>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto" style="color:rgba(255,255,255,0.3);"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">{{ __('site.nav_about') }}</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">{{ __('site.nav_contact') }}</a></li>
                 </ul>
@@ -409,7 +691,7 @@
                     <ul class="list-unstyled small">
                         <li class="mb-2"><i class="bi bi-geo-alt me-2 text-gold"></i>Calasiao, Pangasinan 2418</li>
                         <li class="mb-2"><i class="bi bi-telephone me-2 text-gold"></i>+63 75 123 4567</li>
-                        <li class="mb-2"><i class="bi bi-envelope me-2 text-gold"></i>info@monarchhotel.com</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2 text-gold"></i>info@royalcresthotel.com</li>
                         <li class="mb-2"><i class="bi bi-clock me-2 text-gold"></i>{{ __('site.footer_checkin') }}</li>
                         <li class="mb-2"><i class="bi bi-clock me-2 text-gold"></i>{{ __('site.footer_checkout') }}</li>
                     </ul>
@@ -442,6 +724,15 @@
             const nav = document.getElementById('mainNav');
             nav.classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // Bell wiggle when unread notifications arrive
+        function triggerBellWiggle() {
+            const bell = document.querySelector('#notificationDropdown i.bi-bell');
+            if (!bell) return;
+            bell.classList.remove('bell-notify');
+            void bell.offsetWidth; // reflow to restart animation
+            bell.classList.add('bell-notify');
+        }
 
         // Fade-up animations
         const observer = new IntersectionObserver((entries) => {
@@ -476,6 +767,7 @@
                 if (data.unread_count > 0) {
                     badge.textContent = data.unread_count;
                     badge.style.display = 'inline-block';
+                    triggerBellWiggle();
                 } else {
                     badge.style.display = 'none';
                 }

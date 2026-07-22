@@ -23,7 +23,7 @@ return [
     'hero_title_line1'  => 'Experience',
     'hero_title_line2'  => 'Luxury Beyond',
     'hero_title_line3'  => 'Expectations',
-    'hero_sub'          => 'Discover a world of refined elegance at Monarch Hotel. Enjoy luxurious accommodations, exceptional dining, premium amenities, and warm Filipino hospitality — all thoughtfully crafted to make every stay truly unforgettable.',
+    'hero_sub'          => 'Discover a world of refined elegance at Royal Crest Hotel. Enjoy luxurious accommodations, exceptional dining, premium amenities, and warm Filipino hospitality — all thoughtfully crafted to make every stay truly unforgettable.',
     'hero_get_started'  => 'GET STARTED',
     'hero_explore'      => 'Explore Rooms',
 
@@ -34,11 +34,11 @@ return [
     'stat_years'        => 'Years Excellence',
 
     /* ── About ── */
-    'about_tag'         => 'About Monarch Hotel',
+    'about_tag'         => 'About Royal Crest Hotel',
     'about_title'       => 'A Legacy of Luxury in Pangasinan',
     'about_years'       => 'Years of Excellence',
-    'about_body1'       => 'For over two decades, Monarch Hotel has been the premier destination for travelers seeking luxury, comfort, and authentic Filipino hospitality in Calasiao, Pangasinan. Our award-winning property blends elegant architecture with warm, personalized service.',
-    'about_body2'       => 'From intimate weekend escapes to grand wedding celebrations and international business conferences, Monarch Hotel provides the perfect backdrop for every occasion.',
+    'about_body1'       => 'For over two decades, Royal Crest Hotel has been the premier destination for travelers seeking luxury, comfort, and authentic Filipino hospitality in Calasiao, Pangasinan. Our award-winning property blends elegant architecture with warm, personalized service.',
+    'about_body2'       => 'From intimate weekend escapes to grand wedding celebrations and international business conferences, Royal Crest Hotel provides the perfect backdrop for every occasion.',
     'about_award'       => 'Award-Winning Service',
     'about_star'        => '5-Star Rated',
     'about_safe'        => 'Safe & Secure',
@@ -48,7 +48,7 @@ return [
     /* ── Featured Rooms ── */
     'rooms_tag'         => 'Our Accommodations',
     'rooms_title'       => 'Featured Rooms & Suites',
-    'rooms_sub'         => 'Each room is thoughtfully designed to provide the perfect balance of comfort and timeless elegance.',
+    'rooms_sub'         => 'Each room is thoughtfully designed to provide the perfect balance of comfort and timeless elegance. Suites include complimentary dining based on category.',
     'rooms_view_all'    => 'View All Rooms',
     'rooms_view_details'=> 'View Details',
     'rooms_book_now'    => 'Book Now',
@@ -152,12 +152,12 @@ return [
 
     /* ── About Page ── */
     'about_page_tag'       => 'Our Story',
-    'about_page_title'     => 'About Monarch Hotel',
+    'about_page_title'     => 'About Royal Crest Hotel',
     'about_page_subtitle'  => 'Where Filipino warmth meets world-class luxury',
     'about_heritage_tag'   => 'Our Heritage',
     'about_heritage_title' => 'A Landmark of Luxury in Calasiao',
-    'about_body_p1'        => 'Founded over two decades ago, Monarch Hotel has established itself as the premier luxury destination in Calasiao, Pangasinan. Our commitment to exceptional service and timeless elegance has made us the choice of discerning travelers from across the Philippines and the world.',
-    'about_body_p2'        => 'Every corner of Monarch Hotel tells a story of dedication to excellence — from our meticulously appointed rooms to our award-winning restaurant, world-class spa, and versatile event venues.',
+    'about_body_p1'        => 'Founded over two decades ago, Royal Crest Hotel has established itself as the premier luxury destination in Calasiao, Pangasinan. Our commitment to exceptional service and timeless elegance has made us the choice of discerning travelers from across the Philippines and the world.',
+    'about_body_p2'        => 'Every corner of Royal Crest Hotel tells a story of dedication to excellence — from our meticulously appointed rooms to our award-winning restaurant, world-class spa, and versatile event venues.',
     'about_stat_years'     => 'Years of Excellence',
     'about_stat_events'    => 'Events Hosted',
     'about_stat_guests'    => 'Happy Guests',
@@ -167,7 +167,7 @@ return [
     'about_vision_tag'     => 'Our Vision',
     'about_vision_desc'    => 'To be the most celebrated luxury hotel destination in Pangasinan, known for exceptional service, authentic experiences, and sustainable practices.',
     'about_values_tag'     => 'Our Values',
-    'about_values_desc'    => 'Integrity, Excellence, Warmth, Innovation — these four pillars guide everything we do at Monarch Hotel, from guest services to community involvement.',
+    'about_values_desc'    => 'Integrity, Excellence, Warmth, Innovation — these four pillars guide everything we do at Royal Crest Hotel, from guest services to community involvement.',
     'about_leadership_tag' => 'Leadership',
     'about_team_title'     => 'Meet Our Team',
     'about_gm_role'        => 'General Manager',

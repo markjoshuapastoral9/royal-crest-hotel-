@@ -23,7 +23,7 @@ return [
     'hero_title_line1'  => 'Maranasan ang',
     'hero_title_line2'  => 'Luho Na Higit',
     'hero_title_line3'  => 'Sa Inaasahan',
-    'hero_sub'          => 'Tuklasin ang mundo ng pinong karanasan sa Monarch Hotel. Mag-enjoy ng maluho na tirahan, natatanging pagkain, premium na amenities, at mainit na Filipino na paglilingkod — lahat ay maingat na inihanda para sa isang hindi malilimutang pananatili.',
+    'hero_sub'          => 'Tuklasin ang mundo ng pinong karanasan sa Royal Crest Hotel. Mag-enjoy ng maluho na tirahan, natatanging pagkain, premium na amenities, at mainit na Filipino na paglilingkod — lahat ay maingat na inihanda para sa isang hindi malilimutang pananatili.',
     'hero_get_started'  => 'MAGSIMULA',
     'hero_explore'      => 'Tuklasin ang Mga Kwarto',
 
@@ -34,11 +34,11 @@ return [
     'stat_years'        => 'Taon ng Kahusayan',
 
     /* ── About ── */
-    'about_tag'         => 'Tungkol sa Monarch Hotel',
+    'about_tag'         => 'Tungkol sa Royal Crest Hotel',
     'about_title'       => 'Isang Pamana ng Luho sa Pangasinan',
     'about_years'       => 'Taon ng Kahusayan',
-    'about_body1'       => 'Sa loob ng mahigit dalawang dekada, ang Monarch Hotel ang naging pangunahing destinasyon para sa mga manlalakbay na naghahanap ng luho, kaginhawaan, at tunay na Filipino na pagtulong sa Calasiao, Pangasinan. Ang aming award-winning na ari-arian ay pinagsama ang eleganteng arkitektura at mainit na personalisadong serbisyo.',
-    'about_body2'       => 'Mula sa mga intimate na weekend escape hanggang sa malalaking wedding celebration at internasyonal na business conference, ang Monarch Hotel ang perpektong lugar para sa bawat okasyon.',
+    'about_body1'       => 'Sa loob ng mahigit dalawang dekada, ang Royal Crest Hotel ang naging pangunahing destinasyon para sa mga manlalakbay na naghahanap ng luho, kaginhawaan, at tunay na Filipino na pagtulong sa Calasiao, Pangasinan. Ang aming award-winning na ari-arian ay pinagsama ang eleganteng arkitektura at mainit na personalisadong serbisyo.',
+    'about_body2'       => 'Mula sa mga intimate na weekend escape hanggang sa malalaking wedding celebration at internasyonal na business conference, ang Royal Crest Hotel ang perpektong lugar para sa bawat okasyon.',
     'about_award'       => 'Award-Winning na Serbisyo',
     'about_star'        => '5 Bituin na Rating',
     'about_safe'        => 'Ligtas at Secure',
@@ -144,7 +144,7 @@ return [
     /* ── Facilities Page ── */
     'fac_page_tag'         => 'Mga Amenities ng Hotel',
     'fac_page_title'       => 'World-Class na Pasilidad',
-    'fac_page_subtitle'    => 'Lahat ng kailangan mo para sa perpektong pananatili sa Monarch Hotel',
+    'fac_page_subtitle'    => 'Lahat ng kailangan mo para sa perpektong pananatili sa Royal Crest Hotel',
     'fac_cta_title'        => 'Handa Ka Na Bang Maranasan Ang Lahat ng Ito?',
     'fac_cta_desc'         => 'I-book ang iyong pananatili at tamasahin ang walang limitasyong access sa lahat ng aming world-class na pasilidad.',
     'fac_cta_btn'          => 'I-book ang Iyong Pananatili',
@@ -152,12 +152,12 @@ return [
 
     /* ── About Page ── */
     'about_page_tag'       => 'Ang Aming Kwento',
-    'about_page_title'     => 'Tungkol sa Monarch Hotel',
+    'about_page_title'     => 'Tungkol sa Royal Crest Hotel',
     'about_page_subtitle'  => 'Kung saan ang Filipino na init ay nakakatugon sa world-class na luho',
     'about_heritage_tag'   => 'Ang Aming Pamana',
     'about_heritage_title' => 'Isang Palatandaan ng Luho sa Calasiao',
-    'about_body_p1'        => 'Itinatag mahigit dalawang dekada na ang nakakaraan, ang Monarch Hotel ay naging pangunahing luxury destination sa Calasiao, Pangasinan. Ang aming dedikasyon sa natatanging serbisyo at walang hanggang elegansya ay nagawa kaming maging pagpipilian ng mga mapagpiling manlalakbay mula sa buong Pilipinas at mundo.',
-    'about_body_p2'        => 'Bawat sulok ng Monarch Hotel ay nagkukuwento ng dedikasyon sa kahusayan — mula sa aming maingat na mga kwarto hanggang sa aming award-winning na restaurant, world-class na spa, at versatile na event venues.',
+    'about_body_p1'        => 'Itinatag mahigit dalawang dekada na ang nakakaraan, ang Royal Crest Hotel ay naging pangunahing luxury destination sa Calasiao, Pangasinan. Ang aming dedikasyon sa natatanging serbisyo at walang hanggang elegansya ay nagawa kaming maging pagpipilian ng mga mapagpiling manlalakbay mula sa buong Pilipinas at mundo.',
+    'about_body_p2'        => 'Bawat sulok ng Royal Crest Hotel ay nagkukuwento ng dedikasyon sa kahusayan — mula sa aming maingat na mga kwarto hanggang sa aming award-winning na restaurant, world-class na spa, at versatile na event venues.',
     'about_stat_years'     => 'Taon ng Kahusayan',
     'about_stat_events'    => 'Mga Event na Naihost',
     'about_stat_guests'    => 'Masasayang Bisita',

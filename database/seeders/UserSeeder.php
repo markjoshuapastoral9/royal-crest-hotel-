@@ -12,9 +12,9 @@ class UserSeeder extends Seeder
     {
         // Admin
         $admin = User::firstOrCreate(
-            ['email' => 'admin@monarchhotel.com'],
+            ['email' => 'admin@royalcresthotel.com'],
             [
-                'name'              => 'Admin Subo',
+                'name'              => 'Admin Royal Crest',
                 'password'          => Hash::make('password'),
                 'role'              => 'admin',
                 'phone'             => '+63 912 345 6789',

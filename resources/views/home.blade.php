@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Monarch Hotel - Luxury in Calasiao, Pangasinan')
+@section('title', 'Royal Crest Hotel - Luxury in Calasiao, Pangasinan')
 
 @push('styles')
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -331,7 +331,7 @@ h1,h2,h3,h4,h5 { font-family: 'Cormorant Garamond', 'Playfair Display', serif; }
             <div class="col-lg-5 fade-up">
                 <div class="about-img-stack">
                     <img src="{{ asset('images/honeymoon-suite.jpg') }}"
-                         alt="Monarch Hotel Honeymoon Suite" class="about-img-main"
+                         alt="Royal Crest Hotel Honeymoon Suite" class="about-img-main"
                          style="border-radius:20px;width:100%;height:420px;object-fit:cover;">
                     <div class="about-img-badge" style="position:absolute;bottom:-20px;left:-18px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.2rem 1.6rem;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.5);">
                         <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold);font-weight:700;line-height:1;">25+</div>

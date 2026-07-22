@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Placeholder Images - Royal Crest Dining</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #101111;
+            color: #fff;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { color: #C9A84C; }
+        .image-generator {
+            background: #1a1214;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+        canvas {
+            border: 2px solid #C9A84C;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: block;
+        }
+        button {
+            background: #C9A84C;
+            color: #101111;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        button:hover {
+            background: #b8964a;
+        }
+        .instructions {
+            background: rgba(201,168,76,0.1);
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .status {
+            color: #4ade80;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍽️ Dining Images - Placeholder Generator</h1>
+    <div class="instructions">
+        <strong>📋 Instructions:</strong>
+        <ol>
+            <li>Click "Generate" button for each image</li>
+            <li>Right-click the canvas → "Save image as..."</li>
+            <li>Save with the exact filename shown</li>
+            <li>Place all images in: <code>E:\royal-crest-hotel\public\images\</code></li>
+        </ol>
+    </div>
+
+    <!-- Restaurant Hero -->
+    <div class="image-generator">
+        <h3>1. restaurant-hero.jpg (1200x500px)</h3>
+        <button onclick="generateImage('restaurant-hero', 1200, 500, 'Restaurant Interior', 'Fine Dining Excellence')">Generate</button>
+        <canvas id="restaurant-hero"></canvas>
+        <div class="status" id="status-restaurant-hero"></div>
+    </div>
+
+    <!-- Private Dining -->
+    <div class="image-generator">
+        <h3>2. private-dining.jpg (1200x400px)</h3>
+        <button onclick="generateImage('private-dining', 1200, 400, 'Private Dining', 'Exclusive Experience')">Generate</button>
+        <canvas id="private-dining"></canvas>
+        <div class="status" id="status-private-dining"></div>
+    </div>
+
+    <!-- Private Room 1 -->
+    <div class="image-generator">
+        <h3>3. private-room-1.jpg (800x600px)</h3>
+        <button onclick="generateImage('private-room-1', 800, 600, 'Garden Room', 'Romantic Setting')">Generate</button>
+        <canvas id="private-room-1"></canvas>
+        <div class="status" id="status-private-room-1"></div>
+    </div>
+
+    <!-- Private Room 2 -->
+    <div class="image-generator">
+        <h3>4. private-room-2.jpg (800x600px)</h3>
+        <button onclick="generateImage('private-room-2', 800, 600, 'Executive Room', 'Business Dining')">Generate</button>
+        <canvas id="private-room-2"></canvas>
+        <div class="status" id="status-private-room-2"></div>
+    </div>
+
+    <!-- Private Room 3 -->
+    <div class="image-generator">
+        <h3>5. private-room-3.jpg (800x600px)</h3>
+        <button onclick="generateImage('private-room-3', 800, 600, 'Grand Hall', 'Family Gatherings')">Generate</button>
+        <canvas id="private-room-3"></canvas>
+        <div class="status" id="status-private-room-3"></div>
+    </div>
+
+    <script>
+        function generateImage(id, width, height, title, subtitle) {
+            const canvas = document.getElementById(id);
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+
+            // Gradient background
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, '#2d2416');
+            gradient.addColorStop(0.5, '#1a1214');
+            gradient.addColorStop(1, '#101111');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+
+            // Decorative pattern
+            ctx.strokeStyle = 'rgba(201, 168, 76, 0.1)';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 20; i++) {
+                ctx.beginPath();
+                ctx.arc(
+                    Math.random() * width,
+                    Math.random() * height,
+                    Math.random() * 100 + 50,
+                    0,
+                    Math.PI * 2
+                );
+                ctx.stroke();
+            }
+
+            // Icon/Symbol
+            ctx.font = 'bold 80px Arial';
+            ctx.fillStyle = 'rgba(201, 168, 76, 0.3)';
+            ctx.textAlign = 'center';
+            ctx.fillText('🍽️', width / 2, height / 2 - 40);
+
+            // Title
+            ctx.font = 'bold 48px Arial';
+            ctx.fillStyle = '#C9A84C';
+            ctx.fillText(title, width / 2, height / 2 + 40);
+
+            // Subtitle
+            ctx.font = '28px Arial';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.fillText(subtitle, width / 2, height / 2 + 80);
+
+            // Hotel Name
+            ctx.font = 'italic 20px Arial';
+            ctx.fillStyle = 'rgba(201, 168, 76, 0.8)';
+            ctx.fillText('Royal Crest Hotel', width / 2, height - 30);
+
+            // Status
+            document.getElementById('status-' + id).textContent = '✓ Generated! Right-click image → Save as ' + id + '.jpg';
+        }
+
+        // Auto-generate all on page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                generateImage('restaurant-hero', 1200, 500, 'Restaurant Interior', 'Fine Dining Excellence');
+                generateImage('private-dining', 1200, 400, 'Private Dining', 'Exclusive Experience');
+                generateImage('private-room-1', 800, 600, 'Garden Room', 'Romantic Setting');
+                generateImage('private-room-2', 800, 600, 'Executive Room', 'Business Dining');
+                generateImage('private-room-3', 800, 600, 'Grand Hall', 'Family Gatherings');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

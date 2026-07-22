@@ -149,7 +149,7 @@
             </h6>
             <div style="border:1px solid var(--admin-border);border-radius:8px;overflow:hidden;background:#fff;">
                 <div style="background:#1A1A1A;padding:16px 20px;text-align:center;border-bottom:3px solid #C9A84C;">
-                    <div style="font-size:18px;font-weight:700;letter-spacing:4px;color:#C9A84C;font-family:Georgia,serif;">MONARCH HOTEL</div>
+                    <div style="font-size:18px;font-weight:700;letter-spacing:4px;color:#C9A84C;font-family:Georgia,serif;">ROYAL CREST HOTEL</div>
                     <div style="font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.4);margin-top:2px;">LUXURY · COMFORT · EXCELLENCE</div>
                 </div>
                 <div style="background:linear-gradient(135deg,#C9A84C,#a8862e);padding:10px 16px;font-size:12px;color:#1A1A1A;font-weight:600;">
@@ -159,7 +159,7 @@
                     <em style="color:#aaa;">Your message will appear here...</em>
                 </div>
                 <div style="background:#1A1A1A;padding:16px 20px;text-align:center;">
-                    <div style="color:#C9A84C;font-size:11px;font-weight:600;letter-spacing:2px;">MONARCH HOTEL</div>
+                    <div style="color:#C9A84C;font-size:11px;font-weight:600;letter-spacing:2px;">ROYAL CREST HOTEL</div>
                     <div style="color:rgba(255,255,255,.3);font-size:10px;margin-top:4px;">123 Luxury Avenue, Makati City, Philippines</div>
                 </div>
             </div>

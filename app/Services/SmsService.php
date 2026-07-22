@@ -28,7 +28,7 @@ class SmsService
         //         'apikey' => env('SEMAPHORE_API_KEY'),
         //         'number' => $phone,
         //         'message' => $message,
-        //         'sendername' => 'MONARCH'
+        //         'sendername' => 'ROYALCREST'
         //     ]
         // ]);
         
@@ -44,12 +44,12 @@ class SmsService
         $amount = number_format($booking->total_amount, 2);
         
         $accountInfo = match($booking->payment_method) {
-            'gcash' => "GCash: 0917 123 4567 (MONARCH HOTEL)",
-            'maya' => "Maya: 0917 123 4567 (MONARCH HOTEL)",
-            'bank_transfer' => "BDO: 123-456-789012 (MONARCH HOTEL INC)",
+            'gcash' => "GCash: 0917 123 4567 (ROYAL CREST HOTEL)",
+            'maya' => "Maya: 0917 123 4567 (ROYAL CREST HOTEL)",
+            'bank_transfer' => "BDO: 123-456-789012 (ROYAL CREST HOTEL INC)",
             default => ""
         };
         
-        return "MONARCH HOTEL: Payment for booking {$booking->booking_number}. Amount: PHP {$amount}. {$accountInfo}. Use booking# as reference. Upload proof at monarchhotel.com";
+        return "ROYAL CREST HOTEL: Payment for booking {$booking->booking_number}. Amount: PHP {$amount}. {$accountInfo}. Use booking# as reference. Upload proof at royalcresthotel.com";
     }
 }

@@ -14,7 +14,7 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <label class="form-label small fw-semibold">Hotel Name</label>
-                    <input type="text" name="hotel_name" class="form-control" value="{{ $settings['hotel_name']->value ?? 'Monarch Hotel' }}" required>
+                    <input type="text" name="hotel_name" class="form-control" value="{{ $settings['hotel_name']->value ?? 'Royal Crest Hotel' }}" required>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label small fw-semibold">Tagline</label>

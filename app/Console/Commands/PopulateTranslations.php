@@ -339,11 +339,11 @@ class PopulateTranslations extends Command
                     'es'  => 'Suite Presidencial',
                 ],
                 'description' => [
-                    'fil' => 'Ang pinakamataas na antas ng luho ng Monarch Hotel. Ang Presidential Suite ay nag-aalok ng walang kapantay na karanasan na may panoramic na tanawin, malawak na sala, at world-class na personalisadong serbisyo.',
-                    'ja'  => 'モナークホテルが誇る最高峰の贅沢。プレジデンシャルスイートは、パノラマの眺望、壮大なリビングスペース、そして世界クラスのパーソナライズされたサービスによる比類なき体験を提供します。',
-                    'ko'  => '모나크 호텔의 최고 럭셔리입니다. 프레지덴셜 스위트는 파노라마 전망, 웅장한 거실 공간, 세계 최고 수준의 개인화된 서비스로 비할 데 없는 경험을 제공합니다.',
-                    'zh'  => '这是皇朝酒店奢华的巅峰之作。总统套房提供无与伦比的体验，拥有全景视野、宏伟的起居空间和世界级的个性化服务。',
-                    'es'  => 'La cúspide del lujo en el Hotel Monarch. La Suite Presidencial ofrece una experiencia sin igual con vistas panorámicas, amplios espacios y servicio personalizado de clase mundial.',
+                    'fil' => 'Ang pinakamataas na antas ng luho ng Royal Crest Hotel. Ang Presidential Suite ay nag-aalok ng walang kapantay na karanasan na may panoramic na tanawin, malawak na sala, at world-class na personalisadong serbisyo.',
+                    'ja'  => 'ロイヤルクレストホテルが誇る最高峰の贅沢。プレジデンシャルスイートは、パノラマの眺望、壮大なリビングスペース、そして世界クラスのパーソナライズされたサービスによる比類なき体験を提供します。',
+                    'ko'  => '로열 크레스트 호텔의 최고 럭셔리입니다. 프레지덴셜 스위트는 파노라마 전망, 웅장한 거실 공간, 세계 최고 수준의 개인화된 서비스로 비할 데 없는 경험을 제공합니다.',
+                    'zh'  => '这是皇家之冠酒店奢华的巅峰之作。总统套房提供无与伦比的体验，拥有全景视野、宏伟的起居空间和世界级的个性化服务。',
+                    'es'  => 'La cúspide del lujo en el Hotel Royal Crest. La Suite Presidencial ofrece una experiencia sin igual con vistas panorámicas, amplios espacios y servicio personalizado de clase mundial.',
                 ],
             ],
         ];
@@ -380,11 +380,11 @@ class PopulateTranslations extends Command
             ],
             2 => [
                 'content' => [
-                    'fil' => '"Ang Monarch Hotel ay isang nakatagong kayamanan sa Pangasinan. Ang lugar ng pool ay maganda, malinis ang mga kwarto, at walang kapintasan ang serbisyo. Perpekto para sa romantic na bakasyon."',
-                    'ja'  => '"モナークホテルはパンガシナンの隠れた宝石です。プールエリアは美しく、お部屋は清潔で、サービスは申し分ありません。ロマンティックな旅行に最適です。"',
-                    'ko'  => '"모나크 호텔은 팡가시난의 숨겨진 보석입니다. 수영장 지역이 아름답고, 객실은 깨끗하며, 서비스는 완벽합니다. 로맨틱한 여행에 안성맞춤입니다."',
-                    'zh'  => '"皇朝酒店是潘加西楠的隐藏瑰宝。泳池区域美丽宜人，房间一尘不染，服务无可挑剔。非常适合浪漫度假。"',
-                    'es'  => '"El Hotel Monarch es una joya escondida en Pangasinan. El área de la piscina es hermosa, las habitaciones están impecables y el servicio es insuperable. Perfecto para una escapada romántica."',
+                    'fil' => '"Ang Royal Crest Hotel ay isang nakatagong kayamanan sa Pangasinan. Ang lugar ng pool ay maganda, malinis ang mga kwarto, at walang kapintasan ang serbisyo. Perpekto para sa romantic na bakasyon."',
+                    'ja'  => '"ロイヤルクレストホテルはパンガシナンの隠れた宝石です。プールエリアは美しく、お部屋は清潔で、サービスは申し分ありません。ロマンティックな旅行に最適です。"',
+                    'ko'  => '"로열 크레스트 호텔은 팡가시난의 숨겨진 보석입니다. 수영장 지역이 아름답고, 객실은 깨끗하며, 서비스는 완벽합니다. 로맨틱한 여행에 안성맞춤입니다."',
+                    'zh'  => '"皇家之冠酒店是潘加西楠的隐藏瑰宝。泳池区域美丽宜人，房间一尘不染，服务无可挑剔。非常适合浪漫度假。"',
+                    'es'  => '"El Hotel Royal Crest es una joya escondida en Pangasinan. El área de la piscina es hermosa, las habitaciones están impecables y el servicio es insuperable. Perfecto para una escapada romántica."',
                 ],
                 'guest_name' => [
                     'fil' => 'James Wilson', 'ja' => 'ジェームズ・ウィルソン', 'ko' => '제임스 윌슨', 'zh' => '詹姆斯·威尔逊', 'es' => 'James Wilson',
@@ -496,11 +496,11 @@ class PopulateTranslations extends Command
                     'es'  => 'Restaurante y Gastronomía',
                 ],
                 'description' => [
-                    'fil' => 'Ang signature restaurant ng Monarch ay nagse-serve ng piling hanay ng Filipino at internasyonal na lutuin. Mula sa masustansiyang breakfast buffet hanggang sa romantikong candlelit dinner, ang aming culinary team ay gumagawa ng bawat putahe nang may pagmamahal.',
-                    'ja'  => 'モナークのシグネチャーレストランでは、フィリピン料理と国際料理の精選されたメニューをご提供します。豪華な朝食ブッフェから親密なキャンドルライトディナーまで、料理チームが情熱を込めて一品一品を作り上げます。',
-                    'ko'  => '모나크의 시그니처 레스토랑은 필리핀 요리와 국제 요리의 엄선된 메뉴를 제공합니다. 풍성한 조식 뷔페부터 로맨틱한 캔들라이트 디너까지, 요리팀이 정성을 다해 모든 요리를 만듭니다.',
-                    'zh'  => '皇朝的标志性餐厅提供精心挑选的菲律宾和国际美食。从丰盛的早餐自助餐到浪漫的烛光晚餐，我们的烹饪团队用热情精心烹制每一道菜肴。',
-                    'es'  => 'El restaurante insignia de Monarch sirve una exquisita variedad de cocina filipina e internacional. Desde buffets de desayuno hasta íntimas cenas a la luz de las velas, nuestro equipo culinario elabora cada plato con pasión.',
+                    'fil' => 'Ang signature restaurant ng Royal Crest ay nagse-serve ng piling hanay ng Filipino at internasyonal na lutuin. Mula sa masustansiyang breakfast buffet hanggang sa romantikong candlelit dinner, ang aming culinary team ay gumagawa ng bawat putahe nang may pagmamahal.',
+                    'ja'  => 'ロイヤルクレストのシグネチャーレストランでは、フィリピン料理と国際料理の精選されたメニューをご提供します。豪華な朝食ブッフェから親密なキャンドルライトディナーまで、料理チームが情熱を込めて一品一品を作り上げます。',
+                    'ko'  => '로열 크레스트의 시그니처 레스토랑은 필리핀 요리와 국제 요리의 엄선된 메뉴를 제공합니다. 풍성한 조식 뷔페부터 로맨틱한 캔들라이트 디너까지, 요리팀이 정성을 다해 모든 요리를 만듭니다.',
+                    'zh'  => '皇家之冠的标志性餐厅提供精心挑选的菲律宾和国际美食。从丰盛的早餐自助餐到浪漫的烛光晚餐，我们的烹饪团队用热情精心烹制每一道菜肴。',
+                    'es'  => 'El restaurante insignia de Royal Crest sirve una exquisita variedad de cocina filipina e internacional. Desde buffets de desayuno hasta íntimas cenas a la luz de las velas, nuestro equipo culinario elabora cada plato con pasión.',
                 ],
             ],
             3 => [

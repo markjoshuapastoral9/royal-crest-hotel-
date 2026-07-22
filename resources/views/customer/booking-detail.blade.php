@@ -86,7 +86,7 @@
                 <div class="alert alert-warning mb-0">
                     <small>
                         <strong>⚠️ {{ __('site.bkd_important') }}:</strong> {{ __('site.bkd_use_ref') }} <strong>{{ $booking->booking_number }}</strong>.
-                        {{ __('site.bkd_after_pay') }} <strong>info@monarchhotel.com</strong> {{ __('site.bkd_or_call') }} <strong>+63 75 123 4567</strong>.
+                        {{ __('site.bkd_after_pay') }} <strong>info@royalcresthotel.com</strong> {{ __('site.bkd_or_call') }} <strong>+63 75 123 4567</strong>.
                     </small>
                 </div>
             </div>

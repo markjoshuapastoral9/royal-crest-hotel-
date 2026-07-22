@@ -49,8 +49,10 @@
                 <div class="col-md-3">
                     <div class="small text-muted"><i class="bi bi-calendar me-1"></i>{{ __('site.cb_checkin') }}</div>
                     <div class="small fw-semibold text-white">{{ $booking->check_in->format('M d, Y') }}</div>
+                    <div class="small text-gold">{{ $booking->check_in_time_formatted }}</div>
                     <div class="small text-muted mt-1"><i class="bi bi-calendar me-1"></i>{{ __('site.cb_checkout') }}</div>
                     <div class="small fw-semibold text-white">{{ $booking->check_out->format('M d, Y') }}</div>
+                    <div class="small text-gold">{{ $booking->check_out_time_formatted }}</div>
                 </div>
                 <div class="col-md-3">
                     <div class="d-flex flex-column align-items-start gap-1">

@@ -49,11 +49,11 @@
     <div class="header">
         <div class="row">
             <div class="col col-half">
-                <div class="hotel-name">MONARCH HOTEL</div>
+                <div class="hotel-name">ROYAL CREST HOTEL</div>
                 <div class="hotel-sub">Luxury · Calasiao, Pangasinan</div>
                 <div style="margin-top:8px; font-size:10px; color:#666;">
                     Calasiao, Pangasinan 2418, Philippines<br>
-                    Tel: +63 75 123 4567 | info@monarchhotel.com
+                    Tel: +63 75 123 4567 | info@royalcresthotel.com
                 </div>
             </div>
             <div class="col col-half" style="text-align:right;">
@@ -165,9 +165,9 @@
     <!-- Footer -->
     <div class="footer">
         <div class="gold-line"></div>
-        <p><strong>Thank you for choosing Monarch Hotel!</strong></p>
-        <p style="margin-top:5px;">For inquiries, please contact us at info@monarchhotel.com or +63 75 123 4567</p>
-        <p style="margin-top:5px;">Calasiao, Pangasinan 2418, Philippines | www.monarchhotel.com</p>
+        <p><strong>Thank you for choosing Royal Crest Hotel!</strong></p>
+        <p style="margin-top:5px;">For inquiries, please contact us at info@royalcresthotel.com or +63 75 123 4567</p>
+        <p style="margin-top:5px;">Calasiao, Pangasinan 2418, Philippines | www.royalcresthotel.com</p>
         <p style="margin-top:8px;color:#ccc;">This is a computer-generated invoice. No signature required.</p>
     </div>
 </div>

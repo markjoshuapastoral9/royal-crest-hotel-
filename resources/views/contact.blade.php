@@ -51,7 +51,7 @@
                 @foreach([
                     ['bi-geo-alt-fill',       'con_address_label',    'Calasiao, Pangasinan 2418, Philippines'],
                     ['bi-telephone-fill',     'con_phone_label',      '+63 75 123 4567'],
-                    ['bi-envelope-fill',      'con_email_label',      'info@monarchhotel.com'],
+                    ['bi-envelope-fill',      'con_email_label',      'info@royalcresthotel.com'],
                     ['bi-clock-fill',         'con_checkinout_label', '2:00 PM / 12:00 PM'],
                     ['bi-calendar-check-fill','con_reservations',     null],
                 ] as [$icon, $labelKey, $val])

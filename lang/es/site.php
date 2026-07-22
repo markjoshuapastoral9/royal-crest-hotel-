@@ -23,7 +23,7 @@ return [
     'hero_title_line1'  => 'Experimenta',
     'hero_title_line2'  => 'Un Lujo Más Allá',
     'hero_title_line3'  => 'de las Expectativas',
-    'hero_sub'          => 'Descubre un mundo de elegancia refinada en el Hotel Monarch. Disfruta de alojamientos de lujo, gastronomía excepcional, amenidades premium y la cálida hospitalidad filipina — todo diseñado con esmero para hacer de cada estancia una experiencia verdaderamente inolvidable.',
+    'hero_sub'          => 'Descubre un mundo de elegancia refinada en el Hotel Royal Crest. Disfruta de alojamientos de lujo, gastronomía excepcional, amenidades premium y la cálida hospitalidad filipina — todo diseñado con esmero para hacer de cada estancia una experiencia verdaderamente inolvidable.',
     'hero_get_started'  => 'EMPEZAR',
     'hero_explore'      => 'Explorar Habitaciones',
 
@@ -34,11 +34,11 @@ return [
     'stat_years'        => 'Años de Excelencia',
 
     /* ── About ── */
-    'about_tag'         => 'Sobre el Hotel Monarch',
+    'about_tag'         => 'Sobre el Hotel Royal Crest',
     'about_title'       => 'Un Legado de Lujo en Pangasinan',
     'about_years'       => 'Años de Excelencia',
-    'about_body1'       => 'Durante más de dos décadas, el Hotel Monarch ha sido el destino principal para los viajeros que buscan lujo, comodidad y auténtica hospitalidad filipina en Calasiao, Pangasinan. Nuestra galardonada propiedad combina una arquitectura elegante con un servicio cálido y personalizado.',
-    'about_body2'       => 'Desde íntimas escapadas de fin de semana hasta grandiosas celebraciones de bodas y conferencias internacionales de negocios, el Hotel Monarch proporciona el escenario perfecto para cada ocasión.',
+    'about_body1'       => 'Durante más de dos décadas, el Hotel Royal Crest ha sido el destino principal para los viajeros que buscan lujo, comodidad y auténtica hospitalidad filipina en Calasiao, Pangasinan. Nuestra galardonada propiedad combina una arquitectura elegante con un servicio cálido y personalizado.',
+    'about_body2'       => 'Desde íntimas escapadas de fin de semana hasta grandiosas celebraciones de bodas y conferencias internacionales de negocios, el Hotel Royal Crest proporciona el escenario perfecto para cada ocasión.',
     'about_award'       => 'Servicio Galardonado',
     'about_star'        => '5 Estrellas',
     'about_safe'        => 'Seguro y Protegido',
@@ -144,7 +144,7 @@ return [
     /* ── Facilities Page ── */
     'fac_page_tag'         => 'Servicios del Hotel',
     'fac_page_title'       => 'Instalaciones de Clase Mundial',
-    'fac_page_subtitle'    => 'Todo lo que necesitas para la estancia perfecta en el Hotel Monarch',
+    'fac_page_subtitle'    => 'Todo lo que necesitas para la estancia perfecta en el Hotel Royal Crest',
     'fac_cta_title'        => '¿Listo para Experimentar Todo Esto?',
     'fac_cta_desc'         => 'Reserva tu estancia y disfruta de acceso ilimitado a todas nuestras instalaciones de clase mundial.',
     'fac_cta_btn'          => 'Reserva Tu Estancia',

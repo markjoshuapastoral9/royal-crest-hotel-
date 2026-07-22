@@ -129,8 +129,8 @@
         <table class="detail-table">
             <tr><td style="color:#C0C0C0;">Room</td><td style="color:#ffffff;">{{ $booking->room->name }}</td></tr>
             <tr><td style="color:#C0C0C0;">Room Type</td><td style="color:#ffffff;">{{ $booking->room->roomType->name }}</td></tr>
-            <tr><td style="color:#C0C0C0;">Check-in</td><td style="color:#ffffff;">{{ $booking->check_in->format('D, F d, Y') }}</td></tr>
-            <tr><td style="color:#C0C0C0;">Check-out</td><td style="color:#ffffff;">{{ $booking->check_out->format('D, F d, Y') }}</td></tr>
+            <tr><td style="color:#C0C0C0;">Check-in</td><td style="color:#ffffff;">{{ $booking->check_in->format('D, F d, Y') }} &nbsp;<span style="color:#A6824A;font-weight:700;">{{ $booking->check_in_time_formatted }}</span></td></tr>
+            <tr><td style="color:#C0C0C0;">Check-out</td><td style="color:#ffffff;">{{ $booking->check_out->format('D, F d, Y') }} &nbsp;<span style="color:#A6824A;font-weight:700;">{{ $booking->check_out_time_formatted }}</span></td></tr>
             <tr><td style="color:#C0C0C0;">Duration</td><td style="color:#ffffff;">{{ $booking->nights }} Night(s)</td></tr>
             <tr><td style="color:#C0C0C0;">Guests</td><td style="color:#ffffff;">{{ $booking->adults }} Adult(s)@if($booking->children > 0), {{ $booking->children }} Child(ren)@endif</td></tr>
             <tr><td style="color:#C0C0C0;">Payment Method</td><td style="color:#ffffff;">{{ strtoupper(str_replace('_', ' ', $booking->payment_method)) }}</td></tr>
