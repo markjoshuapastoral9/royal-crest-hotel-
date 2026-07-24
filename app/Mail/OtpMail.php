@@ -20,7 +20,7 @@ class OtpMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Monarch Hotel – Verification Code',
+            subject: 'The Royal Crest – Your Verification Code',
         );
     }
 
