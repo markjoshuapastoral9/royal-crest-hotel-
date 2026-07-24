@@ -11,4 +11,4 @@ cmds = [
 ]
 
 [start]
-cmd = 'bash start-migrations.sh'
+cmd = 'bash start-web.sh'
