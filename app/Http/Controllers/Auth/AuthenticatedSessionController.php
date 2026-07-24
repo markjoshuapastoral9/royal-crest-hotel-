@@ -42,9 +42,8 @@ class AuthenticatedSessionController extends Controller
                 ->with('success', 'Welcome back, ' . $user->name . '!');
         }
 
-        // Step 4: SKIP_OTP bypass - reads directly from .env file
-        $skipOtp = trim(file_get_contents(base_path('.env')));
-        $skipOtp = preg_match('/^SKIP_OTP\s*=\s*true/im', $skipOtp);
+        // Step 4: SKIP_OTP bypass - reads from environment variable
+        $skipOtp = env('SKIP_OTP', false) === true || env('SKIP_OTP', 'false') === 'true';
 
         if ($skipOtp) {
             $request->session()->regenerate();
