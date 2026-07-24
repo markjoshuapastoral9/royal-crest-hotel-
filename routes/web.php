@@ -70,9 +70,20 @@ Route::get('/debug-mail', function () {
         \Illuminate\Support\Facades\Mail::raw('Test OTP mail from Railway at ' . now(), function ($msg) {
             $msg->to('markjoshuapastoral9@gmail.com')->subject('Railway Mail Test');
         });
-        return response()->json(['status' => 'MAIL SENT OK', 'mailer' => config('mail.default')]);
+        return response()->json([
+            'status' => 'MAIL SENT OK',
+            'mailer' => config('mail.default'),
+            'host' => config('mail.mailers.smtp.host'),
+            'port' => config('mail.mailers.smtp.port'),
+        ]);
     } catch (\Exception $e) {
-        return response()->json(['status' => 'MAIL FAILED', 'error' => $e->getMessage(), 'mailer' => config('mail.default')]);
+        return response()->json([
+            'status' => 'MAIL FAILED',
+            'error' => $e->getMessage(),
+            'mailer' => config('mail.default'),
+            'host' => config('mail.mailers.smtp.host'),
+            'port' => config('mail.mailers.smtp.port'),
+        ]);
     }
 });
 Route::get('/up', function () {
