@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
-return Application::configure(basePath: dirname(__DIR__))
+$app = Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
         api: __DIR__.'/../routes/api.php',
@@ -25,16 +25,16 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\SetLocale::class,
         ]);
     })
-    ->withBindings([
-        // Register Resend mail transport
-        'mail.manager' => function ($app) {
-            $manager = $app->make(\Illuminate\Mail\MailManager::class);
-            $manager->extend('resend', function () {
-                return new \App\Mail\ResendTransport();
-            });
-            return $manager;
-        },
-    ])
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
+
+// Register Resend custom transport
+$app->extend('mail.manager', function ($manager) {
+    $manager->extend('resend', function () {
+        return new \App\Mail\ResendTransport();
+    });
+    return $manager;
+});
+
+return $app;
