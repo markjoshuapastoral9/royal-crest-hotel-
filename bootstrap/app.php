@@ -25,6 +25,16 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\SetLocale::class,
         ]);
     })
+    ->withBindings([
+        // Register Resend mail transport
+        'mail.manager' => function ($app) {
+            $manager = $app->make(\Illuminate\Mail\MailManager::class);
+            $manager->extend('resend', function () {
+                return new \App\Mail\ResendTransport();
+            });
+            return $manager;
+        },
+    ])
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
