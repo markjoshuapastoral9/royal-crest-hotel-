@@ -7,10 +7,7 @@ cmds = ['composer install --no-dev --no-interaction --prefer-dist --optimize-aut
 [phases.build]
 cmds = [
     'npm ci --prefer-offline --no-audit',
-    'npm run build',
-    'php artisan route:clear',
-    'php artisan config:clear',
-    'php artisan view:clear'
+    'npm run build'
 ]
 
 [start]

@@ -1,36 +1,13 @@
 #!/bin/bash
-set -e
 
-echo "=========================================="
-echo "Starting Royal Crest Hotel Application"
-echo "=========================================="
+echo "Starting Royal Crest Hotel..."
 
-# Wait for database to be ready
-echo "Waiting for database connection..."
-until php artisan migrate:status 2>&1 | grep -q "Migration table created successfully\|Migration name"; do
-    echo "Database not ready yet, waiting 2 seconds..."
-    sleep 2
-done
-
-echo "Database connection established!"
-echo ""
+# Wait for DB
+sleep 3
 
 # Run migrations
-echo "Running database migrations..."
-php artisan migrate --force --isolated
+php artisan migrate --force 2>&1 || echo "Migration warning - continuing"
 
-echo ""
-echo "Migration completed!"
-echo ""
-
-# Check migration status
-echo "Current migration status:"
-php artisan migrate:status
-
-echo ""
-echo "=========================================="
-echo "Starting Laravel Server on port $PORT"
-echo "=========================================="
-
-# Start the application
-exec php artisan serve --host=0.0.0.0 --port=$PORT --no-reload
+# Start server
+echo "Starting server on port $PORT..."
+exec php artisan serve --host=0.0.0.0 --port=$PORT
