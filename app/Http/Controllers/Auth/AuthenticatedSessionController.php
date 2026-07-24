@@ -55,10 +55,12 @@ class AuthenticatedSessionController extends Controller
         $code = $result['code'];
 
         // Step 6: Send OTP email
+        $mailError = null;
         try {
             Mail::to($user->email)->send(new OtpMail($code, $user->name));
             Log::info('Login OTP sent to: ' . $user->email);
         } catch (\Exception $e) {
+            $mailError = $e->getMessage();
             Log::error('Login OTP FAILED for ' . $user->email . ': ' . $e->getMessage());
         }
 

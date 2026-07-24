@@ -52,6 +52,39 @@ Route::get('/debug-env', function () {
         'request_host' => request()->getHost(),
     ]);
 });
+
+// Temporary mail test route - remove after fixing
+Route::get('/debug-mail', function () {
+    $host = config('mail.mailers.smtp.host');
+    $port = config('mail.mailers.smtp.port');
+    $user = config('mail.mailers.smtp.username');
+    $pass = config('mail.mailers.smtp.password');
+    $from = config('mail.from.address');
+
+    try {
+        \Illuminate\Support\Facades\Mail::raw('Test OTP mail from Railway at ' . now(), function ($msg) use ($from) {
+            $msg->to($from)->subject('Railway Mail Test');
+        });
+        return response()->json([
+            'status' => 'MAIL SENT OK',
+            'host' => $host,
+            'port' => $port,
+            'username' => $user,
+            'password_length' => strlen($pass),
+            'from' => $from,
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'MAIL FAILED',
+            'error' => $e->getMessage(),
+            'host' => $host,
+            'port' => $port,
+            'username' => $user,
+            'password_length' => strlen($pass),
+            'from' => $from,
+        ]);
+    }
+});
 Route::get('/up', function () {
     return response()->json([
         'status' => 'healthy',
