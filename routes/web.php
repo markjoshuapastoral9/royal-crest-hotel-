@@ -40,16 +40,27 @@ Route::get('/health', function () {
 
 // Temporary debug route - remove after fixing
 Route::get('/debug-env', function () {
+    $dbConnected = false;
+    $dbError = null;
+    try {
+        \Illuminate\Support\Facades\DB::connection()->getPdo();
+        $dbConnected = true;
+    } catch (\Exception $e) {
+        $dbError = $e->getMessage();
+    }
+
     return response()->json([
-        'session_driver' => config('session.driver'),
-        'session_domain' => config('session.domain'),
-        'session_secure' => config('session.secure'),
-        'app_env' => config('app.env'),
-        'app_url' => config('app.url'),
-        'db_host' => config('database.connections.mysql.host'),
-        'db_name' => config('database.connections.mysql.database'),
-        'request_secure' => request()->isSecure(),
-        'request_host' => request()->getHost(),
+        'session_driver'  => config('session.driver'),
+        'app_env'         => config('app.env'),
+        'app_url'         => config('app.url'),
+        'db_host'         => config('database.connections.mysql.host'),
+        'db_port'         => config('database.connections.mysql.port'),
+        'db_name'         => config('database.connections.mysql.database'),
+        'db_connected'    => $dbConnected,
+        'db_error'        => $dbError,
+        'mail_mailer'     => config('mail.default'),
+        'request_secure'  => request()->isSecure(),
+        'request_host'    => request()->getHost(),
     ]);
 });
 
