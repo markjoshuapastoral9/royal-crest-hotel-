@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use Resend;
+use Illuminate\Support\Facades\Http;
 use Symfony\Component\Mailer\SentMessage;
 use Symfony\Component\Mailer\Transport\AbstractTransport;
 use Symfony\Component\Mime\MessageConverter;
@@ -13,15 +13,26 @@ class ResendTransport extends AbstractTransport
     {
         $email = MessageConverter::toEmail($message->getOriginalMessage());
         
-        $resend = Resend::client(config('services.resend.key'));
+        $to = [];
+        foreach ($email->getTo() as $address) {
+            $to[] = $address->getAddress();
+        }
         
-        $resend->emails->send([
-            'from' => $email->getFrom()[0]->toString(),
-            'to' => array_map(fn($addr) => $addr->toString(), $email->getTo()),
+        $from = $email->getFrom()[0]->getAddress();
+        
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . config('services.resend.key'),
+            'Content-Type' => 'application/json',
+        ])->post('https://api.resend.com/emails', [
+            'from' => $from,
+            'to' => $to,
             'subject' => $email->getSubject(),
             'html' => $email->getHtmlBody(),
-            'text' => $email->getTextBody(),
         ]);
+        
+        if ($response->failed()) {
+            throw new \Exception('Resend API error: ' . $response->body());
+        }
     }
 
     public function __toString(): string
