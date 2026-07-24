@@ -55,34 +55,13 @@ Route::get('/debug-env', function () {
 
 // Temporary mail test route - remove after fixing
 Route::get('/debug-mail', function () {
-    $host = config('mail.mailers.smtp.host');
-    $port = config('mail.mailers.smtp.port');
-    $user = config('mail.mailers.smtp.username');
-    $pass = config('mail.mailers.smtp.password');
-    $from = config('mail.from.address');
-
     try {
-        \Illuminate\Support\Facades\Mail::raw('Test OTP mail from Railway at ' . now(), function ($msg) use ($from) {
-            $msg->to($from)->subject('Railway Mail Test');
+        \Illuminate\Support\Facades\Mail::raw('Test OTP mail from Railway at ' . now(), function ($msg) {
+            $msg->to('markjoshuapastoral9@gmail.com')->subject('Railway Mail Test');
         });
-        return response()->json([
-            'status' => 'MAIL SENT OK',
-            'host' => $host,
-            'port' => $port,
-            'username' => $user,
-            'password_length' => strlen($pass),
-            'from' => $from,
-        ]);
+        return response()->json(['status' => 'MAIL SENT OK', 'mailer' => config('mail.default')]);
     } catch (\Exception $e) {
-        return response()->json([
-            'status' => 'MAIL FAILED',
-            'error' => $e->getMessage(),
-            'host' => $host,
-            'port' => $port,
-            'username' => $user,
-            'password_length' => strlen($pass),
-            'from' => $from,
-        ]);
+        return response()->json(['status' => 'MAIL FAILED', 'error' => $e->getMessage(), 'mailer' => config('mail.default')]);
     }
 });
 Route::get('/up', function () {
