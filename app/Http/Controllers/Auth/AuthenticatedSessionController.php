@@ -57,7 +57,11 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         // Use our Jetstream Email OTP Action (Laravel Mail — no PHPMailer)
-        (new SendEmailOtp())->send($user);
+        try {
+            (new SendEmailOtp())->send($user);
+        } catch (\Exception $e) {
+            \Log::error('Login OTP failed: ' . $e->getMessage());
+        }
 
         // Store in session for OTP verification step
         session([

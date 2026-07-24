@@ -4,15 +4,9 @@ namespace App\Actions\Fortify;
 
 use App\Mail\OtpMail;
 use App\Models\OtpVerification;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-/**
- * Jetstream Email OTP Action
- *
- * Called after successful credential verification.
- * Generates a 6-digit OTP and sends it via Laravel Mail (not PHPMailer).
- * Integrates with Jetstream's TwoFactorAuthenticatable pipeline.
- */
 class SendEmailOtp
 {
     public function send($user): array
@@ -21,8 +15,10 @@ class SendEmailOtp
 
         try {
             Mail::to($user->email)->send(new OtpMail($result['code'], $user->name));
+            Log::info('OTP sent successfully to: ' . $user->email);
         } catch (\Exception $e) {
-            \Log::error('Jetstream Email OTP send failed: ' . $e->getMessage());
+            Log::error('OTP send FAILED for ' . $user->email . ': ' . $e->getMessage());
+            Log::error('Stack trace: ' . $e->getTraceAsString());
         }
 
         return $result;
