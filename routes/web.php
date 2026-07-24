@@ -38,6 +38,28 @@ Route::get('/health', function () {
     ]);
 });
 
+// Temporary debug route - remove after fixing
+Route::get('/debug-env', function () {
+    return response()->json([
+        'session_driver' => config('session.driver'),
+        'session_domain' => config('session.domain'),
+        'session_secure' => config('session.secure'),
+        'app_env' => config('app.env'),
+        'app_url' => config('app.url'),
+        'db_host' => config('database.connections.mysql.host'),
+        'db_name' => config('database.connections.mysql.database'),
+        'request_secure' => request()->isSecure(),
+        'request_host' => request()->getHost(),
+    ]);
+});
+Route::get('/up', function () {
+    return response()->json([
+        'status' => 'healthy',
+        'timestamp' => now()->toIso8601String(),
+        'app' => config('app.name'),
+    ]);
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/facilities', [HomeController::class, 'facilities'])->name('facilities');
